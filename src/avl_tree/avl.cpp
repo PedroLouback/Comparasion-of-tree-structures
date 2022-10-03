@@ -242,57 +242,83 @@ void rotacaoDuplaEsquerda(AVLTree **t)
 	rotacaoSimplesEsquerda(t);
 }
 
-AVLTree *Insert500EntriesinTree(AVLTree *t, vector<float> vector_entries)
+AVLTree *Insert500EntriesinAVLTree(AVLTree *t, RecordAVL r_500entries)
 {
-	RecordAVL r;
+	ifstream entries_file;
+	string number_in_string;
+	float number;
 
-	for (size_t i = 0; i < vector_entries.size(); i++)
+	entries_file.open("src/files/500entries.txt");
+	while (!entries_file.eof())
 	{
-		r.key = vector_entries.at(i);
-		r.value = 1;
-		insertTreeAVL(&t, r);
+		getline(entries_file, number_in_string);
+		istringstream in(number_in_string);
+		in >> number;
+		r_500entries.key = number;
+		r_500entries.value = 1;
+		insertTreeAVL(&t, r_500entries);
 	}
 
 	return t;
 }
 
-AVLTree *Insert5000EntriesinTree(AVLTree *t, vector<float> vector_entries)
+AVLTree *Insert5000EntriesinAVLTree(AVLTree *t, RecordAVL r_5000entries)
 {
-	RecordAVL r;
+	ifstream entries_file;
+	string number_in_string;
+	float number;
 
-	for (size_t i = 0; i < vector_entries.size(); i++)
+	entries_file.open("src/files/5000entries.txt");
+	while (!entries_file.eof())
 	{
-		r.key = vector_entries.at(i);
-		r.value = 1;
-		insertTreeAVL(&t, r);
+		getline(entries_file, number_in_string);
+		istringstream in(number_in_string);
+		in >> number;
+		r_5000entries.key = number;
+		r_5000entries.value = 1;
+		insertTreeAVL(&t, r_5000entries);
+	}
+
+	return t;
+
+}
+
+AVLTree *Insert50000EntriesinAVLTree(AVLTree *t, RecordAVL r_50000entries)
+{
+	ifstream entries_file;
+	string number_in_string;
+	float number;
+
+	entries_file.open("src/files/50000entries.txt");
+	while (!entries_file.eof())
+	{
+		getline(entries_file, number_in_string);
+		istringstream in(number_in_string);
+		in >> number;
+		r_50000entries.key = number;
+		r_50000entries.value = 1;
+		insertTreeAVL(&t, r_50000entries);
 	}
 
 	return t;
 }
 
-AVLTree *Insert50000EntriesinTree(AVLTree *t, vector<float> vector_entries)
+AVLTree *Insert500000EntriesinAVLTree(AVLTree *t, RecordAVL r_500000entries)
 {
-	RecordAVL r;
 
-	for (size_t i = 0; i < vector_entries.size(); i++)
+	ifstream entries_file;
+	string number_in_string;
+	float number;
+
+	entries_file.open("src/files/500000entries.txt");
+	while (!entries_file.eof())
 	{
-		r.key = vector_entries.at(i);
-		r.value = 1;
-		insertTreeAVL(&t, r);
-	}
-
-	return t;
-}
-
-AVLTree *Insert500000EntriesinTree(AVLTree *t, vector<float> vector_entries)
-{
-	RecordAVL r;
-
-	for (size_t i = 0; i < vector_entries.size(); i++)
-	{
-		r.key = vector_entries.at(i);
-		r.value = 1;
-		insertTreeAVL(&t, r);
+		getline(entries_file, number_in_string);
+		istringstream in(number_in_string);
+		in >> number;
+		r_500000entries.key = number;
+		r_500000entries.value = 1;
+		insertTreeAVL(&t, r_500000entries);
 	}
 
 	return t;

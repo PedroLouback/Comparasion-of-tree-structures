@@ -220,49 +220,79 @@ void posordem(RBTree *t)
   }
 }
 
-RBTree *Insert500EntriesinRBTree(RBTree *t, vector<float> vector_entries, RecordRB r_500entries)
+RBTree *Insert500EntriesinRBTree(RBTree *t, RecordRB r_500entries)
 {
 
-  for (size_t i = 0; i < vector_entries.size(); i++)
-  {
-    r_500entries.key = vector_entries.at(i);
+  ifstream entries_file;
+  string number_in_string;
+  float number;
 
+  entries_file.open("src/files/500entries.txt");
+  while (!entries_file.eof())
+  {
+    getline(entries_file, number_in_string);
+    istringstream in(number_in_string);
+    in >> number;
+    r_500entries.key = number;
     insertTreeRB(&t, &t, &t, r_500entries);
   }
 
   return t;
 }
 
-RBTree *Insert5000EntriesinRBTree(RBTree *t, vector<float> vector_entries, RecordRB r_5000entries)
+RBTree *Insert5000EntriesinRBTree(RBTree *t, RecordRB r_5000entries)
 {
+  ifstream entries_file;
+  string number_in_string;
+  float number;
 
-  for (size_t i = 0; i < vector_entries.size(); i++)
+  entries_file.open("src/files/5000entries.txt");
+  while (!entries_file.eof())
   {
-    r_5000entries.key = vector_entries.at(i);
+    getline(entries_file, number_in_string);
+    istringstream in(number_in_string);
+    in >> number;
+    r_5000entries.key = number;
     insertTreeRB(&t, &t, &t, r_5000entries);
   }
 
   return t;
 }
 
-RBTree *Insert50000EntriesinRBTree(RBTree *t, vector<float> vector_entries, RecordRB r_50000entries)
+RBTree *Insert50000EntriesinRBTree(RBTree *t, RecordRB r_50000entries)
 {
 
-  for (size_t i = 0; i < vector_entries.size(); i++)
+  ifstream entries_file;
+  string number_in_string;
+  float number;
+
+  entries_file.open("src/files/50000entries.txt");
+  while (!entries_file.eof())
   {
-    r_50000entries.key = vector_entries.at(i);
+    getline(entries_file, number_in_string);
+    istringstream in(number_in_string);
+    in >> number;
+    r_50000entries.key = number;
     insertTreeRB(&t, &t, &t, r_50000entries);
   }
 
   return t;
 }
 
-RBTree *Insert500000EntriesinRBTree(RBTree *t, vector<float> vector_entries, RecordRB r_500000entries)
+RBTree *Insert500000EntriesinRBTree(RBTree *t, RecordRB r_500000entries)
 {
 
-  for (size_t i = 0; i < vector_entries.size(); i++)
+  ifstream entries_file;
+  string number_in_string;
+  float number;
+
+  entries_file.open("src/files/500000entries.txt");
+  while (!entries_file.eof())
   {
-    r_500000entries.key = vector_entries.at(i);
+    getline(entries_file, number_in_string);
+    istringstream in(number_in_string);
+    in >> number;
+    r_500000entries.key = number;
     insertTreeRB(&t, &t, &t, r_500000entries);
   }
 

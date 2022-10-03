@@ -6,6 +6,11 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <vector>
+#include <fstream>
+#include <random>
+#include <iomanip>
+#include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -38,9 +43,9 @@ void central(Tree *t);
 void posordem(Tree *t);
 void widthPath(Tree *t);
 
-Tree *Insert500EntriesinTree(Tree *t, vector<float> vector_entries, Record r_500entries);
-Tree *Insert5000EntriesinTree(Tree *t, vector<float> vector_entries, Record r_5000entries);
-Tree *Insert50000EntriesinTree(Tree *t, vector<float> vector_entries, Record r_50000entries);
-Tree *Insert500000EntriesinTree(Tree *t, vector<float> vector_entries, Record r_500000entries);
+Tree *Insert500EntriesinTree(Tree *t, Record r_500entries);
+Tree *Insert5000EntriesinTree(Tree *t, Record r_5000entries);
+Tree *Insert50000EntriesinTree(Tree *t, Record r_50000entries);
+Tree *Insert500000EntriesinTree(Tree *t, Record r_500000entries);
 
 #endif

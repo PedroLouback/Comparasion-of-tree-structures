@@ -57,6 +57,7 @@ void pesquisa(Tree **t, Tree **aux, Record r)
   }
 
   *aux = *t;
+  printf("\nO número %f foi pesquisado e encontrado com sucesso na árvore\n", r.key);
 }
 
 int isInTree(Tree *t, Record r)
@@ -141,7 +142,7 @@ void central(Tree *t)
   if (!(t == NULL))
   {
     central(t->esq);
-    cout << t->reg.key << " ";
+    printf("%f ", t->reg.key);
     central(t->dir);
   }
 }
@@ -187,25 +188,40 @@ void widthPath(Tree *t)
   }
 }
 
-Tree *Insert500EntriesinTree(Tree *t, vector<float> vector_entries, Record r_500entries)
+Tree *Insert500EntriesinTree(Tree *t, Record r_500entries)
 {
+  ifstream entries_file;
+  string number_in_string;
+  float number;
 
-  for (size_t i = 0; i < vector_entries.size(); i++)
+  entries_file.open("src/files/500entries.txt");
+  while (!entries_file.eof())
   {
-    r_500entries.key = vector_entries.at(i);
+    getline(entries_file, number_in_string);
+    istringstream in(number_in_string);
+    in >> number;
+    r_500entries.key = number;
     r_500entries.value = 1;
     insertTree(&t, r_500entries);
   }
-  
+
   return t;
 }
 
-Tree *Insert5000EntriesinTree(Tree *t, vector<float> vector_entries, Record r_5000entries)
+Tree *Insert5000EntriesinTree(Tree *t, Record r_5000entries)
 {
 
-  for (size_t i = 0; i < vector_entries.size(); i++)
+  ifstream entries_file;
+  string number_in_string;
+  float number;
+
+  entries_file.open("src/files/5000entries.txt");
+  while (!entries_file.eof())
   {
-    r_5000entries.key = vector_entries.at(i);
+    getline(entries_file, number_in_string);
+    istringstream in(number_in_string);
+    in >> number;
+    r_5000entries.key = number;
     r_5000entries.value = 1;
     insertTree(&t, r_5000entries);
   }
@@ -213,12 +229,20 @@ Tree *Insert5000EntriesinTree(Tree *t, vector<float> vector_entries, Record r_50
   return t;
 }
 
-Tree *Insert50000EntriesinTree(Tree *t, vector<float> vector_entries, Record r_50000entries)
+Tree *Insert50000EntriesinTree(Tree *t, Record r_50000entries)
 {
 
-  for (size_t i = 0; i < vector_entries.size(); i++)
+  ifstream entries_file;
+  string number_in_string;
+  float number;
+
+  entries_file.open("src/files/50000entries.txt");
+  while (!entries_file.eof())
   {
-    r_50000entries.key = vector_entries.at(i);
+    getline(entries_file, number_in_string);
+    istringstream in(number_in_string);
+    in >> number;
+    r_50000entries.key = number;
     r_50000entries.value = 1;
     insertTree(&t, r_50000entries);
   }
@@ -226,16 +250,22 @@ Tree *Insert50000EntriesinTree(Tree *t, vector<float> vector_entries, Record r_5
   return t;
 }
 
-Tree *Insert500000EntriesinTree(Tree *t, vector<float> vector_entries, Record r_500000entries)
+Tree *Insert500000EntriesinTree(Tree *t, Record r_500000entries)
 {
+  ifstream entries_file;
+  string number_in_string;
+  float number;
 
-  for (size_t i = 0; i < vector_entries.size(); i++)
+  entries_file.open("src/files/500000entries.txt");
+  while (!entries_file.eof())
   {
-    r_500000entries.key = vector_entries.at(i);
+    getline(entries_file, number_in_string);
+    istringstream in(number_in_string);
+    in >> number;
+    r_500000entries.key = number;
     r_500000entries.value = 1;
     insertTree(&t, r_500000entries);
   }
 
   return t;
 }
-

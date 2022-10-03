@@ -21,7 +21,7 @@ void CreateEntriesFile()
     srand(time(NULL));
     for (int i = 0; i < 500; i++)
     {
-        entries_file << setprecision(10) << distr(eng) << endl;
+        entries_file << setprecision(6) << distr(eng) << endl;
     }
     entries_file.close();
 
@@ -93,81 +93,6 @@ void CreateQueryFile()
         query_file << setprecision(10) << distr(eng) << endl;
     }
     query_file.close();
-}
-
-vector<float> Read500EntriesFile()
-{
-    ifstream entries_file;
-    string number_in_string;
-    float number;
-    vector<float> vector_entries;
-
-    entries_file.open("src/files/500entries.txt");
-    while(!entries_file.eof()){
-        getline(entries_file, number_in_string);
-        istringstream in(number_in_string);
-        in >> number;
-        vector_entries.push_back(number);
-    }
-
-    return vector_entries;
-}
-
-vector<float> Read5000EntriesFile()
-{
-    ifstream entries_file;
-    string number_in_string;
-    float number;
-    vector<float> vector_entries;
-
-    entries_file.open("src/files/5000entries.txt");
-    while (!entries_file.eof())
-    {
-        getline(entries_file, number_in_string);
-        istringstream in(number_in_string);
-        in >> number;
-        vector_entries.push_back(number);
-    }
-
-    return vector_entries;
-}
-
-vector<float> Read50000EntriesFile()
-{
-    ifstream entries_file;
-    string number_in_string;
-    float number;
-    vector<float> vector_entries;
-
-    entries_file.open("src/files/50000entries.txt");
-    while (!entries_file.eof())
-    {
-        getline(entries_file, number_in_string);
-        istringstream in(number_in_string);
-        in >> number;
-        vector_entries.push_back(number);
-    }
-
-    return vector_entries;
-}
-
-vector<float> Read500000EntriesFile()
-{
-    ifstream entries_file;
-    string number_in_string;
-    float number;
-    vector<float> vector_entries;
-
-    entries_file.open("src/files/500000entries.txt");
-    while (!entries_file.eof())
-    {
-        getline(entries_file, number_in_string);
-        istringstream in(number_in_string);
-        in >> number;
-        vector_entries.push_back(number);
-    }
-
-    return vector_entries;
 }
 
 vector<float> ReadQueryNumbers()

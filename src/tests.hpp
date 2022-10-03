@@ -5,8 +5,9 @@
 
 using namespace std;
 
-void TestsBinaryTree(vector<float> entries500, vector<float> entries5000, vector<float> entries50000, vector<float> entries500000, vector<float> query_numbers);
-void TestsAVLTree(vector<float> entries500, vector<float> entries5000, vector<float> entries50000, vector<float> entries500000, vector<float> query_numbers);
-void TestsRBTree(vector<float> entries500, vector<float> entries5000, vector<float> entries50000, vector<float> entries500000, vector<float> query_numbers);
+void TestsBinaryTree(vector<float> query_numbers);
+void TestsAVLTree(vector<float> query_numbers);
+void TestsRBTree(vector<float> query_numbers);
+void SearchAndRemove500Entries(Tree *raiz500entries, vector<float> query_numbers);
 
 #endif

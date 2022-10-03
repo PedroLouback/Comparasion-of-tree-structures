@@ -5,6 +5,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
+#include <fstream>
+#include <random>
+#include <iomanip>
+#include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -46,9 +51,9 @@ void rotacaoSimplesEsquerda(AVLTree **t);
 void rotacaoDuplaDireita(AVLTree **t);
 void rotacaoDuplaEsquerda(AVLTree **t);
 
-AVLTree *Insert500EntriesinTree(AVLTree *t, vector<float> vector_entries);
-AVLTree *Insert5000EntriesinTree(AVLTree *t, vector<float> vector_entries);
-AVLTree *Insert50000EntriesinTree(AVLTree *t, vector<float> vector_entries);
-AVLTree *Insert500000EntriesinTree(AVLTree *t, vector<float> vector_entries);
+AVLTree *Insert500EntriesinAVLTree(AVLTree *t, RecordAVL r_500entries);
+AVLTree *Insert5000EntriesinAVLTree(AVLTree *t, RecordAVL r_5000entries);
+AVLTree *Insert50000EntriesinAVLTree(AVLTree *t, RecordAVL r_50000entries);
+AVLTree *Insert500000EntriesinAVLTree(AVLTree *t, RecordAVL r_500000entries);
 
 #endif
