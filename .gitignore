@@ -1,0 +1,8 @@
+.vscode/settings.json
+build/app
+build/objects/src/main.o
+build/objects/src/avl_tree/avl.o
+build/objects/src/binary_tree/fila.o
+build/objects/src/binary_tree/tree.o
+build/objects/src/files/files.o
+build/objects/src/redblack_tree/rb.o

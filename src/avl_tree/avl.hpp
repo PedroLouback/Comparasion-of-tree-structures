@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <vector>
 
 using namespace std;
 
@@ -12,8 +13,8 @@ typedef struct AVLTree AVLTree;
 
 struct RecordAVL
 {
-	int key;
-	int value;
+	float key;
+	float value;
 };
 
 struct AVLTree
@@ -44,5 +45,10 @@ void rotacaoSimplesDireita(AVLTree **t);
 void rotacaoSimplesEsquerda(AVLTree **t);
 void rotacaoDuplaDireita(AVLTree **t);
 void rotacaoDuplaEsquerda(AVLTree **t);
+
+AVLTree *Insert500EntriesinTree(AVLTree *t, vector<float> vector_entries);
+AVLTree *Insert5000EntriesinTree(AVLTree *t, vector<float> vector_entries);
+AVLTree *Insert50000EntriesinTree(AVLTree *t, vector<float> vector_entries);
+AVLTree *Insert500000EntriesinTree(AVLTree *t, vector<float> vector_entries);
 
 #endif

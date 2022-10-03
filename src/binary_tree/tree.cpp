@@ -16,7 +16,7 @@ void insertTree(Tree **t, Record r)
 
   if (TVazia(t))
   {
-    *t = (Tree *)malloc(sizeof(Tree));
+    *t = new Tree;
     (*t)->esq = NULL;
     (*t)->dir = NULL;
     (*t)->reg = r;
@@ -127,9 +127,10 @@ void removeTree(Tree **t, Record r)
 
 void preordem(Tree *t)
 {
+
   if (!(t == NULL))
   {
-    printf("%d ", t->reg.key);
+    cout << t->reg.key << " ";
     preordem(t->esq);
     preordem(t->dir);
   }
@@ -140,7 +141,7 @@ void central(Tree *t)
   if (!(t == NULL))
   {
     central(t->esq);
-    printf("%d ", t->reg.key);
+    cout << t->reg.key << " ";
     central(t->dir);
   }
 }
@@ -151,7 +152,7 @@ void posordem(Tree *t)
   {
     posordem(t->esq);
     posordem(t->dir);
-    printf("%d ", t->reg.key);
+    cout << t->reg.key << " ";
   }
 }
 
@@ -168,7 +169,7 @@ void widthPath(Tree *t)
   {
 
     Desenfileira(&q, &no);
-    printf("%d ", no.p->reg.key);
+    cout << no.p->reg.key << " ";
 
     if (no.p->esq != NULL)
     {
@@ -185,3 +186,56 @@ void widthPath(Tree *t)
     }
   }
 }
+
+Tree *Insert500EntriesinTree(Tree *t, vector<float> vector_entries, Record r_500entries)
+{
+
+  for (size_t i = 0; i < vector_entries.size(); i++)
+  {
+    r_500entries.key = vector_entries.at(i);
+    r_500entries.value = 1;
+    insertTree(&t, r_500entries);
+  }
+  
+  return t;
+}
+
+Tree *Insert5000EntriesinTree(Tree *t, vector<float> vector_entries, Record r_5000entries)
+{
+
+  for (size_t i = 0; i < vector_entries.size(); i++)
+  {
+    r_5000entries.key = vector_entries.at(i);
+    r_5000entries.value = 1;
+    insertTree(&t, r_5000entries);
+  }
+
+  return t;
+}
+
+Tree *Insert50000EntriesinTree(Tree *t, vector<float> vector_entries, Record r_50000entries)
+{
+
+  for (size_t i = 0; i < vector_entries.size(); i++)
+  {
+    r_50000entries.key = vector_entries.at(i);
+    r_50000entries.value = 1;
+    insertTree(&t, r_50000entries);
+  }
+
+  return t;
+}
+
+Tree *Insert500000EntriesinTree(Tree *t, vector<float> vector_entries, Record r_500000entries)
+{
+
+  for (size_t i = 0; i < vector_entries.size(); i++)
+  {
+    r_500000entries.key = vector_entries.at(i);
+    r_500000entries.value = 1;
+    insertTree(&t, r_500000entries);
+  }
+
+  return t;
+}
+

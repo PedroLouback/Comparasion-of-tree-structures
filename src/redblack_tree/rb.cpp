@@ -80,7 +80,7 @@ void insertTreeRB(RBTree **t, RBTree **pai, RBTree **raiz, RecordRB r)
 
   if (*t == NULL)
   {
-    *t = (RBTree *)malloc(sizeof(RBTree));
+    *t = new RBTree;
     (*t)->esq = NULL;
     (*t)->dir = NULL;
     (*t)->pai = pai != t ? *pai : NULL;
@@ -194,7 +194,7 @@ void preordem(RBTree *t)
 {
   if (!(t == NULL))
   {
-    printf("%d - %s\t", t->reg.key, t->cor ? "black" : "red");
+    printf("%f - %s\t", t->reg.key, t->cor ? "black" : "red");
     preordem(t->esq);
     preordem(t->dir);
   }
@@ -205,7 +205,7 @@ void central(RBTree *t)
   if (!(t == NULL))
   {
     central(t->esq);
-    printf("%d - %s\t", t->reg.key, t->cor ? "black" : "red");
+    printf("%f - %s\t", t->reg.key, t->cor ? "black" : "red");
     central(t->dir);
   }
 }
@@ -216,6 +216,55 @@ void posordem(RBTree *t)
   {
     posordem(t->esq);
     posordem(t->dir);
-    printf("%d - %s\t", t->reg.key, t->cor ? "black" : "red");
+    printf("%f - %s\t", t->reg.key, t->cor ? "black" : "red");
   }
+}
+
+RBTree *Insert500EntriesinRBTree(RBTree *t, vector<float> vector_entries, RecordRB r_500entries)
+{
+
+  for (size_t i = 0; i < vector_entries.size(); i++)
+  {
+    r_500entries.key = vector_entries.at(i);
+
+    insertTreeRB(&t, &t, &t, r_500entries);
+  }
+
+  return t;
+}
+
+RBTree *Insert5000EntriesinRBTree(RBTree *t, vector<float> vector_entries, RecordRB r_5000entries)
+{
+
+  for (size_t i = 0; i < vector_entries.size(); i++)
+  {
+    r_5000entries.key = vector_entries.at(i);
+    insertTreeRB(&t, &t, &t, r_5000entries);
+  }
+
+  return t;
+}
+
+RBTree *Insert50000EntriesinRBTree(RBTree *t, vector<float> vector_entries, RecordRB r_50000entries)
+{
+
+  for (size_t i = 0; i < vector_entries.size(); i++)
+  {
+    r_50000entries.key = vector_entries.at(i);
+    insertTreeRB(&t, &t, &t, r_50000entries);
+  }
+
+  return t;
+}
+
+RBTree *Insert500000EntriesinRBTree(RBTree *t, vector<float> vector_entries, RecordRB r_500000entries)
+{
+
+  for (size_t i = 0; i < vector_entries.size(); i++)
+  {
+    r_500000entries.key = vector_entries.at(i);
+    insertTreeRB(&t, &t, &t, r_500000entries);
+  }
+
+  return t;
 }

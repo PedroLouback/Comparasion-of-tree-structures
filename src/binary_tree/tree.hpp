@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <vector>
 
 using namespace std;
 
@@ -13,8 +14,8 @@ typedef struct Tree Tree;
 
 struct Record
 {
-	int key;
-	int value;
+	float key;
+	float value;
 };
 
 struct Tree
@@ -36,5 +37,10 @@ void preordem(Tree *t);
 void central(Tree *t);
 void posordem(Tree *t);
 void widthPath(Tree *t);
+
+Tree *Insert500EntriesinTree(Tree *t, vector<float> vector_entries, Record r_500entries);
+Tree *Insert5000EntriesinTree(Tree *t, vector<float> vector_entries, Record r_5000entries);
+Tree *Insert50000EntriesinTree(Tree *t, vector<float> vector_entries, Record r_50000entries);
+Tree *Insert500000EntriesinTree(Tree *t, vector<float> vector_entries, Record r_500000entries);
 
 #endif

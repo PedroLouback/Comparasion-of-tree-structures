@@ -16,5 +16,6 @@ vector<float> Read500EntriesFile();
 vector<float> Read5000EntriesFile();
 vector<float> Read50000EntriesFile();
 vector<float> Read500000EntriesFile();
+vector<float> ReadQueryNumbers();
 
 #endif

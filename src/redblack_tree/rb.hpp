@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <vector>
 
 using namespace std;
 
@@ -13,7 +14,7 @@ typedef struct RBTree RBTree;
 
 struct RecordRB
 {
-	int key;
+	float key;
 };
 
 struct RBTree
@@ -36,5 +37,10 @@ void pesquisa(RBTree **t, RBTree **aux, RecordRB r);
 void preordem(RBTree *t);
 void central(RBTree *t);
 void posordem(RBTree *t);
+
+RBTree *Insert500EntriesinRBTree(RBTree *t, vector<float> vector_entries, RecordRB r_500entries);
+RBTree *Insert5000EntriesinRBTree(RBTree *t, vector<float> vector_entries, RecordRB r_5000entries);
+RBTree *Insert50000EntriesinRBTree(RBTree*t, vector<float> vector_entries, RecordRB r_50000entries);
+RBTree *Insert500000EntriesinRBTree(RBTree *t, vector<float> vector_entries, RecordRB r_500000entries);
 
 #endif

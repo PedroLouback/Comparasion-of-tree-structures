@@ -10,7 +10,7 @@ void insertTreeAVL(AVLTree **t, RecordAVL r)
 
 	if (*t == NULL)
 	{
-		*t = (AVLTree *)malloc(sizeof(AVLTree));
+		*t = new AVLTree;
 		(*t)->left = NULL;
 		(*t)->right = NULL;
 		(*t)->weight = 0;
@@ -168,7 +168,7 @@ void preordem(AVLTree *t)
 {
 	if (!(t == NULL))
 	{
-		printf("%d:%d\t", t->reg.key, t->weight);
+		cout << t->reg.key << ":" << t->weight << "\t";
 		preordem(t->left);
 		preordem(t->right);
 	}
@@ -179,7 +179,7 @@ void central(AVLTree *t)
 	if (!(t == NULL))
 	{
 		central(t->left);
-		printf("%d\t", t->reg.key);
+		cout << t->reg.key << "\t";
 		central(t->right);
 	}
 }
@@ -190,7 +190,7 @@ void posordem(AVLTree *t)
 	{
 		posordem(t->left);
 		posordem(t->right);
-		printf("%d\t", t->reg.key);
+		cout << t->reg.key << "\t";
 	}
 }
 
@@ -240,4 +240,60 @@ void rotacaoDuplaEsquerda(AVLTree **t)
 {
 	rotacaoSimplesDireita(&(*t)->right);
 	rotacaoSimplesEsquerda(t);
+}
+
+AVLTree *Insert500EntriesinTree(AVLTree *t, vector<float> vector_entries)
+{
+	RecordAVL r;
+
+	for (size_t i = 0; i < vector_entries.size(); i++)
+	{
+		r.key = vector_entries.at(i);
+		r.value = 1;
+		insertTreeAVL(&t, r);
+	}
+
+	return t;
+}
+
+AVLTree *Insert5000EntriesinTree(AVLTree *t, vector<float> vector_entries)
+{
+	RecordAVL r;
+
+	for (size_t i = 0; i < vector_entries.size(); i++)
+	{
+		r.key = vector_entries.at(i);
+		r.value = 1;
+		insertTreeAVL(&t, r);
+	}
+
+	return t;
+}
+
+AVLTree *Insert50000EntriesinTree(AVLTree *t, vector<float> vector_entries)
+{
+	RecordAVL r;
+
+	for (size_t i = 0; i < vector_entries.size(); i++)
+	{
+		r.key = vector_entries.at(i);
+		r.value = 1;
+		insertTreeAVL(&t, r);
+	}
+
+	return t;
+}
+
+AVLTree *Insert500000EntriesinTree(AVLTree *t, vector<float> vector_entries)
+{
+	RecordAVL r;
+
+	for (size_t i = 0; i < vector_entries.size(); i++)
+	{
+		r.key = vector_entries.at(i);
+		r.value = 1;
+		insertTreeAVL(&t, r);
+	}
+
+	return t;
 }
