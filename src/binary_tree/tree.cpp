@@ -41,7 +41,6 @@ void pesquisa(Tree **t, Tree **aux, Record r)
 
   if (*t == NULL)
   {
-    printf("[ERROR]: Node not found!");
     return;
   }
 
@@ -57,7 +56,6 @@ void pesquisa(Tree **t, Tree **aux, Record r)
   }
 
   *aux = *t;
-  printf("\nO número %f foi pesquisado e encontrado com sucesso na árvore\n", r.key);
 }
 
 int isInTree(Tree *t, Record r)
@@ -92,7 +90,6 @@ void removeTree(Tree **t, Record r)
 
   if (*t == NULL)
   {
-    printf("[ERROR]: Record not found!!!\n");
     return;
   }
 
@@ -124,6 +121,7 @@ void removeTree(Tree **t, Record r)
   aux = *t;
   *t = (*t)->dir;
   free(aux);
+
 }
 
 void preordem(Tree *t)
@@ -268,4 +266,56 @@ Tree *Insert500000EntriesinTree(Tree *t, Record r_500000entries)
   }
 
   return t;
+}
+
+void SearchAndRemove500Entries(Tree *raiz500entries, vector<float> query_numbers)
+{
+  Record r;
+  Tree *aux = CreateBinaryTree();
+
+  for (size_t i = 0; i < query_numbers.size(); i++)
+  {
+    r.key = query_numbers.at(i);
+    pesquisa(&raiz500entries, &aux, r);
+    removeTree(&raiz500entries, r);
+  }
+}
+
+void SearchAndRemove5000Entries(Tree *raiz5000entries, vector<float> query_numbers)
+{
+  Record r;
+  Tree *aux = CreateBinaryTree();
+
+  for (size_t i = 0; i < query_numbers.size(); i++)
+  {
+    r.key = query_numbers.at(i);
+    pesquisa(&raiz5000entries, &aux, r);
+    removeTree(&raiz5000entries, r);
+  }
+}
+
+void SearchAndRemove50000Entries(Tree *raiz50000entries, vector<float> query_numbers)
+{
+  Record r;
+  Tree *aux = CreateBinaryTree();
+
+  for (size_t i = 0; i < query_numbers.size(); i++)
+  {
+    r.key = query_numbers.at(i);
+    pesquisa(&raiz50000entries, &aux, r);
+    removeTree(&raiz50000entries, r);
+  }
+}
+
+void SearchAndRemove500000Entries(Tree *raiz500000entries, vector<float> query_numbers)
+{
+  Record r;
+  Tree *aux = CreateBinaryTree();
+
+  for (size_t i = 0; i < query_numbers.size(); i++)
+  {
+    r.key = query_numbers.at(i);
+    pesquisa(&raiz500000entries, &aux, r);
+    removeTree(&raiz500000entries, r);
+  }
 }

@@ -56,4 +56,10 @@ AVLTree *Insert5000EntriesinAVLTree(AVLTree *t, RecordAVL r_5000entries);
 AVLTree *Insert50000EntriesinAVLTree(AVLTree *t, RecordAVL r_50000entries);
 AVLTree *Insert500000EntriesinAVLTree(AVLTree *t, RecordAVL r_500000entries);
 
+
+void SearchAndRemoveAVL500Entries(AVLTree *raizAVL500entries, vector<float> query_numbers);
+void SearchAndRemoveAVL5000Entries(AVLTree *raizAVL5000entries, vector<float> query_numbers);
+void SearchAndRemoveAVL50000Entries(AVLTree *raizAVL50000entries, vector<float> query_numbers);
+void SearchAndRemoveAVL500000Entries(AVLTree *raizAVL500000entries, vector<float> query_numbers);
+
 #endif

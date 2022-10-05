@@ -8,7 +8,7 @@ void CreateEntriesFile()
 
     random_device rd;
     default_random_engine eng(rd());
-    uniform_real_distribution<> distr(1, 100);
+    uniform_real_distribution<> distr(1, 9);
 
     // Create a file with 500 entries
     entries_file.open("src/files/500entries.txt");
@@ -21,7 +21,8 @@ void CreateEntriesFile()
     srand(time(NULL));
     for (int i = 0; i < 500; i++)
     {
-        entries_file << setprecision(6) << distr(eng) << endl;
+
+        entries_file << setprecision(7) << distr(eng) << "\n";
     }
     entries_file.close();
 
@@ -36,7 +37,8 @@ void CreateEntriesFile()
     srand(time(NULL));
     for (int i = 0; i < 5000; i++)
     {
-        entries_file << setprecision(10) << distr(eng) << endl;
+
+        entries_file << setprecision(7) << distr(eng) << "\n";
     }
     entries_file.close();
 
@@ -51,7 +53,8 @@ void CreateEntriesFile()
     srand(time(NULL));
     for (int i = 0; i < 50000; i++)
     {
-        entries_file << setprecision(10) << distr(eng) << endl;
+
+        entries_file << setprecision(7) << distr(eng) << "\n";
     }
     entries_file.close();
 
@@ -66,7 +69,8 @@ void CreateEntriesFile()
     srand(time(NULL));
     for (int i = 0; i < 500000; i++)
     {
-        entries_file << setprecision(10) << distr(eng) << endl;
+
+        entries_file << setprecision(7) << distr(eng) << "\n";
     }
     entries_file.close();
 }
@@ -78,7 +82,7 @@ void CreateQueryFile()
 
     random_device rd;
     default_random_engine eng(rd());
-    uniform_real_distribution<> distr(1, 100);
+    uniform_real_distribution<> distr(1, 9);
 
     query_file.open("src/files/querynumbers.txt");
     if (!query_file)
@@ -90,7 +94,8 @@ void CreateQueryFile()
     srand(time(NULL));
     for (int i = 0; i < 10000; i++)
     {
-        query_file << setprecision(10) << distr(eng) << endl;
+
+        query_file << setprecision(7) << distr(eng) << "\n";
     }
     query_file.close();
 }

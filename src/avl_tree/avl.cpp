@@ -10,7 +10,7 @@ void insertTreeAVL(AVLTree **t, RecordAVL r)
 
 	if (*t == NULL)
 	{
-		*t = new AVLTree;
+		*t = (AVLTree *)malloc(sizeof(AVLTree));
 		(*t)->left = NULL;
 		(*t)->right = NULL;
 		(*t)->weight = 0;
@@ -52,7 +52,6 @@ void pesquisa(AVLTree **t, AVLTree **aux, RecordAVL r)
 
 	if (*t == NULL)
 	{
-		printf("[ERROR]: Node not found!");
 		return;
 	}
 
@@ -125,7 +124,6 @@ void removeTree(AVLTree **t, AVLTree **f, RecordAVL r)
 
 	if (*t == NULL)
 	{
-		printf("[ERROR]: Record not found!!!\n");
 		return;
 	}
 
@@ -322,4 +320,56 @@ AVLTree *Insert500000EntriesinAVLTree(AVLTree *t, RecordAVL r_500000entries)
 	}
 
 	return t;
+}
+
+void SearchAndRemoveAVL500Entries(AVLTree *raizAVL500entries, vector<float> query_numbers)
+{
+	RecordAVL r;
+	AVLTree *aux = CreateAVLTree();
+
+	for (size_t i = 0; i < query_numbers.size(); i++)
+	{
+		r.key = query_numbers.at(i);
+		pesquisa(&raizAVL500entries, &aux, r);
+		removeTree(&raizAVL500entries, &raizAVL500entries, r);
+	}
+}
+
+void SearchAndRemoveAVL5000Entries(AVLTree *raizAVL5000entries, vector<float> query_numbers)
+{
+	RecordAVL r;
+	AVLTree *aux = CreateAVLTree();
+
+	for (size_t i = 0; i < query_numbers.size(); i++)
+	{
+		r.key = query_numbers.at(i);
+		pesquisa(&raizAVL5000entries, &aux, r);
+		removeTree(&raizAVL5000entries, &raizAVL5000entries, r);
+	}
+}
+
+void SearchAndRemoveAVL50000Entries(AVLTree *raizAVL50000entries, vector<float> query_numbers)
+{
+	RecordAVL r;
+	AVLTree *aux = CreateAVLTree();
+
+	for (size_t i = 0; i < query_numbers.size(); i++)
+	{
+		r.key = query_numbers.at(i);
+		pesquisa(&raizAVL50000entries, &aux, r);
+		removeTree(&raizAVL50000entries, &raizAVL50000entries, r);
+	}
+}
+
+void SearchAndRemoveAVL500000Entries(AVLTree *raizAVL500000entries, vector<float> query_numbers)
+{
+	RecordAVL r;
+	AVLTree *aux = CreateAVLTree();
+
+	for (size_t i = 0; i < query_numbers.size(); i++)
+	{
+		r.key = query_numbers.at(i);
+		pesquisa(&raizAVL500000entries, &aux, r);
+		removeTree(&raizAVL500000entries, &raizAVL500000entries, r);
+	}
 }

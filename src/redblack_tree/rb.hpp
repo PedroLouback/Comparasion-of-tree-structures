@@ -48,4 +48,9 @@ RBTree *Insert5000EntriesinRBTree(RBTree *t, RecordRB r_5000entries);
 RBTree *Insert50000EntriesinRBTree(RBTree*t, RecordRB r_50000entries);
 RBTree *Insert500000EntriesinRBTree(RBTree *t, RecordRB r_500000entries);
 
+void SearchAndRemoveRB500Entries(RBTree *raizRB500entries, vector<float> query_numbers);
+void SearchAndRemoveRB5000Entries(RBTree *raizRB5000entries, vector<float> query_numbers);
+void SearchAndRemoveRB50000Entries(RBTree *raizRB50000entries, vector<float> query_numbers);
+void SearchAndRemoveRB500000Entries(RBTree *raizRB500000entries, vector<float> query_numbers);
+
 #endif

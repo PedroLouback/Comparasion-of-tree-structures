@@ -48,4 +48,9 @@ Tree *Insert5000EntriesinTree(Tree *t, Record r_5000entries);
 Tree *Insert50000EntriesinTree(Tree *t, Record r_50000entries);
 Tree *Insert500000EntriesinTree(Tree *t, Record r_500000entries);
 
+void SearchAndRemove500Entries(Tree *raiz500entries, vector<float> query_numbers);
+void SearchAndRemove5000Entries(Tree *raiz5000entries, vector<float> query_numbers);
+void SearchAndRemove50000Entries(Tree *raiz50000entries, vector<float> query_numbers);
+void SearchAndRemove500000Entries(Tree *raiz500000entries, vector<float> query_numbers);
+
 #endif

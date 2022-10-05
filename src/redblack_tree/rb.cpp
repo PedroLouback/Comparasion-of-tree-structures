@@ -110,7 +110,6 @@ void pesquisa(RBTree **t, RBTree **aux, RecordRB r)
 
   if (*t == NULL)
   {
-    printf("[ERROR]: Node not found!");
     return;
   }
 
@@ -297,4 +296,52 @@ RBTree *Insert500000EntriesinRBTree(RBTree *t, RecordRB r_500000entries)
   }
 
   return t;
+}
+
+void SearchAndRemoveRB500Entries(RBTree *raizRB500entries, vector<float> query_numbers)
+{
+  RecordRB r;
+  RBTree *aux = CreateRBTree();
+
+  for (size_t i = 0; i < query_numbers.size(); i++)
+  {
+    r.key = query_numbers.at(i);
+    pesquisa(&raizRB500entries, &aux, r);
+  }
+}
+
+void SearchAndRemoveRB5000Entries(RBTree *raizRB5000entries, vector<float> query_numbers)
+{
+  RecordRB r;
+  RBTree *aux = CreateRBTree();
+
+  for (size_t i = 0; i < query_numbers.size(); i++)
+  {
+    r.key = query_numbers.at(i);
+    pesquisa(&raizRB5000entries, &aux, r);
+  }
+}
+
+void SearchAndRemoveRB50000Entries(RBTree *raizRB50000entries, vector<float> query_numbers)
+{
+  RecordRB r;
+  RBTree *aux = CreateRBTree();
+
+  for (size_t i = 0; i < query_numbers.size(); i++)
+  {
+    r.key = query_numbers.at(i);
+    pesquisa(&raizRB50000entries, &aux, r);
+  }
+}
+
+void SearchAndRemoveRB500000Entries(RBTree *raizRB500000entries, vector<float> query_numbers)
+{
+  RecordRB r;
+  RBTree *aux = CreateRBTree();
+
+  for (size_t i = 0; i < query_numbers.size(); i++)
+  {
+    r.key = query_numbers.at(i);
+    pesquisa(&raizRB500000entries, &aux, r);
+  }
 }
