@@ -121,7 +121,6 @@ void removeTree(Tree **t, Record r)
   aux = *t;
   *t = (*t)->dir;
   free(aux);
-
 }
 
 void preordem(Tree *t)
@@ -272,50 +271,98 @@ void SearchAndRemove500Entries(Tree *raiz500entries, vector<float> query_numbers
 {
   Record r;
   Tree *aux = CreateBinaryTree();
+  size_t time;
 
+  time = clock();
   for (size_t i = 0; i < query_numbers.size(); i++)
   {
     r.key = query_numbers.at(i);
     pesquisa(&raiz500entries, &aux, r);
+  }
+  time = clock() - time;
+  cout << "\nPesquisa: " << float(time) / CLOCKS_PER_SEC << " segundos";
+
+  time = clock();
+  for (size_t i = 0; i < query_numbers.size(); i++)
+  {
+    r.key = query_numbers.at(i);
     removeTree(&raiz500entries, r);
   }
+  time = clock() - time;
+  cout << "\nRemoção: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
 }
 
 void SearchAndRemove5000Entries(Tree *raiz5000entries, vector<float> query_numbers)
 {
   Record r;
   Tree *aux = CreateBinaryTree();
+  size_t time;
 
+  time = clock();
   for (size_t i = 0; i < query_numbers.size(); i++)
   {
     r.key = query_numbers.at(i);
     pesquisa(&raiz5000entries, &aux, r);
+  }
+  time = clock() - time;
+  cout << "\nPesquisa: " << float(time) / CLOCKS_PER_SEC << " segundos";
+
+  time = clock();
+  for (size_t i = 0; i < query_numbers.size(); i++)
+  {
+    r.key = query_numbers.at(i);
     removeTree(&raiz5000entries, r);
   }
+  time = clock() - time;
+  cout << "\nRemoção: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
 }
 
 void SearchAndRemove50000Entries(Tree *raiz50000entries, vector<float> query_numbers)
 {
   Record r;
   Tree *aux = CreateBinaryTree();
+  size_t time;
 
+  time = clock();
   for (size_t i = 0; i < query_numbers.size(); i++)
   {
     r.key = query_numbers.at(i);
     pesquisa(&raiz50000entries, &aux, r);
+  }
+  time = clock() - time;
+  cout << "\nPesquisa: " << float(time) / CLOCKS_PER_SEC << " segundos";
+
+  time = clock();
+  for (size_t i = 0; i < query_numbers.size(); i++)
+  {
+    r.key = query_numbers.at(i);
     removeTree(&raiz50000entries, r);
   }
+  time = clock() - time;
+  cout << "\nRemoção: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
 }
 
 void SearchAndRemove500000Entries(Tree *raiz500000entries, vector<float> query_numbers)
 {
   Record r;
   Tree *aux = CreateBinaryTree();
+  size_t time;
 
+  time = clock();
   for (size_t i = 0; i < query_numbers.size(); i++)
   {
     r.key = query_numbers.at(i);
     pesquisa(&raiz500000entries, &aux, r);
+  }
+  time = clock() - time;
+  cout << "\nPesquisa: " << float(time) / CLOCKS_PER_SEC << " segundos";
+
+  time = clock();
+  for (size_t i = 0; i < query_numbers.size(); i++)
+  {
+    r.key = query_numbers.at(i);
     removeTree(&raiz500000entries, r);
   }
+  time = clock() - time;
+  cout << "\nRemoção: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
 }

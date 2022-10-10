@@ -14,43 +14,17 @@
 
 using namespace std;
 
-typedef struct RecordRB RecordRB;
-typedef struct RBTree RBTree;
+typedef struct NO *RBTree;
+RBTree *cria_ArvoreRB();
+void libera_RBTree(RBTree *raiz);
+float insere_RBTree(RBTree *raiz, float valor);
+float remove_RBTree(RBTree *raiz, float valor);
+float consulta_RBTree(RBTree *raiz, float valor);
+void emOrdem_RBTree(RBTree *raiz, int H);
 
-struct RecordRB
-{
-	float key;
-};
-
-struct RBTree
-{
-	RecordRB reg;
-	RBTree *esq, *dir;
-	RBTree *pai; // específico para rubro negra
-	bool cor;	 // específico para rubro negra (FALSE = VERMELHOR, TRUE = PRETO)
-};
-
-RBTree *CreateRBTree();
-
-void rotacaoSimplesEsquerda(RBTree **raiz, RBTree *child);
-void rotacaoSimplesDireita(RBTree **raiz, RBTree *child);
-
-void insertFixUp(RBTree **raiz, RBTree *child);
-void insertTreeRB(RBTree **t, RBTree **pai, RBTree **raiz, RecordRB r);
-void pesquisa(RBTree **t, RBTree **aux, RecordRB r);
-
-void preordem(RBTree *t);
-void central(RBTree *t);
-void posordem(RBTree *t);
-
-RBTree *Insert500EntriesinRBTree(RBTree *t, RecordRB r_500entries);
-RBTree *Insert5000EntriesinRBTree(RBTree *t, RecordRB r_5000entries);
-RBTree *Insert50000EntriesinRBTree(RBTree*t, RecordRB r_50000entries);
-RBTree *Insert500000EntriesinRBTree(RBTree *t, RecordRB r_500000entries);
-
-void SearchAndRemoveRB500Entries(RBTree *raizRB500entries, vector<float> query_numbers);
-void SearchAndRemoveRB5000Entries(RBTree *raizRB5000entries, vector<float> query_numbers);
-void SearchAndRemoveRB50000Entries(RBTree *raizRB50000entries, vector<float> query_numbers);
-void SearchAndRemoveRB500000Entries(RBTree *raizRB500000entries, vector<float> query_numbers);
+void SearchAndRemoveRB500Entries(RBTree *RB500entries, vector<float> query_numbers);
+void SearchAndRemoveRB5000Entries(RBTree *RB5000entries, vector<float> query_numbers);
+void SearchAndRemoveRB50000Entries(RBTree *RB50000entries, vector<float> query_numbers);
+void SearchAndRemoveRB500000Entries(RBTree *RB500000entries, vector<float> query_numbers);
 
 #endif

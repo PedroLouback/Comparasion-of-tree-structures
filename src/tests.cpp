@@ -3,86 +3,175 @@
 void TestsBinaryTree(vector<float> query_numbers)
 {
 
+    size_t time;   
+    cout << "\n||TEMPOS PARA ESTRUTURA ÁRVORE BINÁRIA||";
     // Inserção, remoção e pesquisa na árvore binária
+    cout << "\n500 Entradas:";
+    time = clock();
     Tree *raiz500entries = CreateBinaryTree();
     Record r_500entries;
     raiz500entries = Insert500EntriesinTree(raiz500entries, r_500entries);
+    time = clock() - time;
+    cout << "\nMontagem de estrutura: " << float(time) / CLOCKS_PER_SEC << " segundos";
     SearchAndRemove500Entries(raiz500entries, query_numbers);
     free(raiz500entries);
 
+    cout << "\n5000 Entradas:";
+    time = clock();
     Tree *raiz5000entries = CreateBinaryTree();
     Record r_5000entries;
     raiz5000entries = Insert5000EntriesinTree(raiz5000entries, r_5000entries);
+    time = clock() - time;
+    cout << "\nMontagem de estrutura: " << float(time) / CLOCKS_PER_SEC << " segundos";
     SearchAndRemove5000Entries(raiz5000entries, query_numbers);
     free(raiz5000entries);
 
+    cout << "\n50000 Entradas:";
+    time = clock();
     Tree *raiz50000entries = CreateBinaryTree();
     Record r_50000entries;
     raiz50000entries = Insert50000EntriesinTree(raiz50000entries, r_50000entries);
+    time = clock() - time;
+    cout << "\nMontagem de estrutura: " << float(time) / CLOCKS_PER_SEC << " segundos";
     SearchAndRemove50000Entries(raiz50000entries, query_numbers);
     free(raiz50000entries);
 
+    cout << "\n500000 Entradas:";
+    time = clock();
     Tree *raiz500000entries = CreateBinaryTree();
     Record r_500000entries;
     raiz500000entries = Insert500000EntriesinTree(raiz500000entries, r_500000entries);
+    time = clock() - time;
+    cout << "\nMontagem de estrutura: " << float(time) / CLOCKS_PER_SEC << " segundos";
     SearchAndRemove500000Entries(raiz500000entries, query_numbers);
     free(raiz500000entries);
 }
 
 void TestsAVLTree(vector<float> query_numbers)
 {
-    // Inserção na árvore AVL
+    size_t time;
+    cout << "\n||TEMPOS PARA ESTRUTURA ÁRVORE AVL||";
+    // Inserção, remoção e pesquisa na árvore AVL
+    cout << "\n500 Entradas:";
+    time = clock();
     AVLTree *raizAVL500entries = CreateAVLTree();
     RecordAVL r_500entries;
     raizAVL500entries = Insert500EntriesinAVLTree(raizAVL500entries, r_500entries);
+    time = clock() - time;
+    cout << "\nMontagem de estrutura: " << float(time) / CLOCKS_PER_SEC << " segundos";
     SearchAndRemoveAVL500Entries(raizAVL500entries, query_numbers);
     free(raizAVL500entries);
 
+    cout << "\n5000 Entradas:";
+    time = clock();
     AVLTree *raizAVL5000entries = CreateAVLTree();
     RecordAVL r_5000entries;
     raizAVL5000entries = Insert5000EntriesinAVLTree(raizAVL5000entries, r_5000entries);
+    time = clock() - time;
+    cout << "\nMontagem de estrutura: " << float(time) / CLOCKS_PER_SEC << " segundos";
     SearchAndRemoveAVL5000Entries(raizAVL5000entries, query_numbers);
     free(raizAVL5000entries);
 
+    cout << "\n50000 Entradas:";
+    time = clock();
     AVLTree *raizAVL50000entries = CreateAVLTree();
     RecordAVL r_50000entries;
     raizAVL50000entries = Insert50000EntriesinAVLTree(raizAVL50000entries, r_50000entries);
+    time = clock() - time;
+    cout << "\nMontagem de estrutura: " << float(time) / CLOCKS_PER_SEC << " segundos";
     SearchAndRemoveAVL50000Entries(raizAVL50000entries, query_numbers);
     free(raizAVL50000entries);
 
+    cout << "\n500000 Entradas:";
+    time = clock();
     AVLTree *raizAVL500000entries = CreateAVLTree();
     RecordAVL r_500000entries;
     raizAVL500000entries = Insert500000EntriesinAVLTree(raizAVL500000entries, r_500000entries);
+    time = clock() - time;
+    cout << "\nMontagem de estrutura: " << float(time) / CLOCKS_PER_SEC << " segundos";
     SearchAndRemoveAVL500000Entries(raizAVL500000entries, query_numbers);
     free(raizAVL500000entries);
 }
 
 void TestsRBTree(vector<float> query_numbers)
 {
-    // Inserção na árvore RedBlack
-    RBTree *raizRB500entries = CreateRBTree();
-    RecordRB r_500entries;
-    raizRB500entries = Insert500EntriesinRBTree(raizRB500entries, r_500entries);
-    SearchAndRemoveRB500Entries(raizRB500entries, query_numbers);
-    free(raizRB500entries);
+    ifstream entries_file;
+    string number_in_string;
+    float number;
+    size_t time;
+    
+    cout << "\n||TEMPOS PARA ESTRUTURA ÁRVORE REDBLACK||";
+    // Insere, pesquisa e remove na árvore RedBlack de 500 entradas
+    cout << "\n500 Entradas:";
+    time = clock();
+    RBTree *RB500entries = cria_ArvoreRB();
+    entries_file.open("src/files/500entries.txt");
+    while (!entries_file.eof())
+    {
+        getline(entries_file, number_in_string);
+        istringstream in(number_in_string);
+        in >> number;
+        insere_RBTree(RB500entries, number);
+    }
+    time = clock() - time;
+    cout << "\nMontagem de estrutura: " << float(time) / CLOCKS_PER_SEC << " segundos";
+    entries_file.close();
+    SearchAndRemoveRB500Entries(RB500entries, query_numbers);
 
-    RBTree *raizRB5000entries = CreateRBTree();
-    RecordRB r_5000entries;
-    raizRB5000entries = Insert5000EntriesinRBTree(raizRB5000entries, r_5000entries);
-    SearchAndRemoveRB5000Entries(raizRB5000entries, query_numbers);
-    free(raizRB5000entries);
+    //Insere, pesquisa e remove na árvore RedBlack de 5000 entradas
+    cout << "\n5000 Entradas:";
+    time = clock();
+    RBTree *RB5000entries = cria_ArvoreRB();
+    entries_file.open("src/files/5000entries.txt");
+    while (!entries_file.eof())
+    {
+        getline(entries_file, number_in_string);
+        istringstream in(number_in_string);
+        in >> number;
+        insere_RBTree(RB5000entries, number);
+    }
+    time = clock() - time;
+    cout << "\nMontagem de estrutura: " << float(time) / CLOCKS_PER_SEC << " segundos";
+    entries_file.close();
+    SearchAndRemoveRB5000Entries(RB5000entries, query_numbers);
 
-    RBTree *raizRB50000entries = CreateRBTree();
-    RecordRB r_50000entries;
-    raizRB50000entries = Insert50000EntriesinRBTree(raizRB50000entries, r_50000entries);
-    SearchAndRemoveRB50000Entries(raizRB50000entries, query_numbers);
-    free(raizRB50000entries);
+    // Insere, pesquisa e remove na árvore RedBlack de 50000 entradas
+    cout << "\n50000 Entradas:";
+    time = clock();
+    RBTree *RB50000entries = cria_ArvoreRB();
+    entries_file.open("src/files/50000entries.txt");
+    while (!entries_file.eof())
+    {
+        getline(entries_file, number_in_string);
+        istringstream in(number_in_string);
+        in >> number;
+        insere_RBTree(RB50000entries, number);
+    }
+    time = clock() - time;
+    cout << "\nMontagem de estrutura: " << float(time) / CLOCKS_PER_SEC << " segundos";
+    entries_file.close();
+    SearchAndRemoveRB50000Entries(RB50000entries, query_numbers);
 
-    RBTree *raizRB500000entries = CreateRBTree();
-    RecordRB r_500000entries;
-    raizRB500000entries = Insert500000EntriesinRBTree(raizRB500000entries, r_500000entries);
-    SearchAndRemoveRB500000Entries(raizRB500000entries, query_numbers);
-    free(raizRB500000entries);
+    // Insere, pesquisa e remove na árvore RedBlack de 500000 entradas
+    cout << "\n500000 Entradas:";
+    time = clock();
+    RBTree *RB500000entries = cria_ArvoreRB();
+    entries_file.open("src/files/500000entries.txt");
+    while (!entries_file.eof())
+    {
+        getline(entries_file, number_in_string);
+        istringstream in(number_in_string);
+        in >> number;
+        insere_RBTree(RB500000entries, number);
+    }
+    time = clock() - time;
+    cout << "\nMontagem de estrutura: " << float(time) / CLOCKS_PER_SEC << " segundos";
+    entries_file.close();
+    SearchAndRemoveRB500Entries(RB500000entries, query_numbers);
+}
 
-    cout << query_numbers.at(1);
+void TestsWithVectors(vector<float> query_numbers)
+{
+    
+
 }

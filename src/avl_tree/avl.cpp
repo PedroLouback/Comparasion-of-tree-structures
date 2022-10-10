@@ -278,7 +278,6 @@ AVLTree *Insert5000EntriesinAVLTree(AVLTree *t, RecordAVL r_5000entries)
 	}
 
 	return t;
-
 }
 
 AVLTree *Insert50000EntriesinAVLTree(AVLTree *t, RecordAVL r_50000entries)
@@ -326,26 +325,51 @@ void SearchAndRemoveAVL500Entries(AVLTree *raizAVL500entries, vector<float> quer
 {
 	RecordAVL r;
 	AVLTree *aux = CreateAVLTree();
+	size_t time;
 
+	time = clock();
 	for (size_t i = 0; i < query_numbers.size(); i++)
 	{
 		r.key = query_numbers.at(i);
 		pesquisa(&raizAVL500entries, &aux, r);
+	}
+	time = clock() - time;
+	cout << "\nPesquisa: " << float(time) / CLOCKS_PER_SEC << " segundos";
+
+	time = clock();
+	for (size_t i = 0; i < query_numbers.size(); i++)
+	{
+		r.key = query_numbers.at(i);
 		removeTree(&raizAVL500entries, &raizAVL500entries, r);
 	}
+	time = clock() - time;
+
+	cout << "\nRemoção: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
 }
 
 void SearchAndRemoveAVL5000Entries(AVLTree *raizAVL5000entries, vector<float> query_numbers)
 {
 	RecordAVL r;
 	AVLTree *aux = CreateAVLTree();
+	size_t time;
 
+	time = clock();
 	for (size_t i = 0; i < query_numbers.size(); i++)
 	{
 		r.key = query_numbers.at(i);
 		pesquisa(&raizAVL5000entries, &aux, r);
+	}
+	time = clock() - time;
+	cout << "\nPesquisa: " << float(time) / CLOCKS_PER_SEC << " segundos";
+
+	time = clock();
+	for (size_t i = 0; i < query_numbers.size(); i++)
+	{
+		r.key = query_numbers.at(i);
 		removeTree(&raizAVL5000entries, &raizAVL5000entries, r);
 	}
+	time = clock() - time;
+	cout << "\nRemoção: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
 }
 
 void SearchAndRemoveAVL50000Entries(AVLTree *raizAVL50000entries, vector<float> query_numbers)
@@ -353,12 +377,25 @@ void SearchAndRemoveAVL50000Entries(AVLTree *raizAVL50000entries, vector<float> 
 	RecordAVL r;
 	AVLTree *aux = CreateAVLTree();
 
+	size_t time;
+
+	time = clock();
 	for (size_t i = 0; i < query_numbers.size(); i++)
 	{
 		r.key = query_numbers.at(i);
 		pesquisa(&raizAVL50000entries, &aux, r);
+	}
+	time = clock() - time;
+	cout << "\nPesquisa: " << float(time) / CLOCKS_PER_SEC << " segundos";
+
+	time = clock();
+	for (size_t i = 0; i < query_numbers.size(); i++)
+	{
+		r.key = query_numbers.at(i);
 		removeTree(&raizAVL50000entries, &raizAVL50000entries, r);
 	}
+	time = clock() - time;
+	cout << "\nRemoção: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
 }
 
 void SearchAndRemoveAVL500000Entries(AVLTree *raizAVL500000entries, vector<float> query_numbers)
@@ -366,10 +403,23 @@ void SearchAndRemoveAVL500000Entries(AVLTree *raizAVL500000entries, vector<float
 	RecordAVL r;
 	AVLTree *aux = CreateAVLTree();
 
+	size_t time;
+
+	time = clock();
 	for (size_t i = 0; i < query_numbers.size(); i++)
 	{
 		r.key = query_numbers.at(i);
 		pesquisa(&raizAVL500000entries, &aux, r);
+	}
+	time = clock() - time;
+	cout << "\nPesquisa: " << float(time) / CLOCKS_PER_SEC << " segundos";
+
+	time = clock();
+	for (size_t i = 0; i < query_numbers.size(); i++)
+	{
+		r.key = query_numbers.at(i);
 		removeTree(&raizAVL500000entries, &raizAVL500000entries, r);
 	}
+	time = clock() - time;
+	cout << "\nRemoção: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
 }

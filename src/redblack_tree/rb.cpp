@@ -1,347 +1,363 @@
 #include "rb.hpp"
 
-RBTree *CreateRBTree()
+#define RED 1
+#define BLACK 0
+
+struct NO
 {
-  return NULL;
+	float info;
+	struct NO *esq;
+	struct NO *dir;
+	int cor;
+};
+
+RBTree *cria_ArvoreRB()
+{
+	RBTree *raiz = (RBTree *)malloc(sizeof(RBTree));
+	if (raiz != NULL)
+	{
+		*raiz = NULL;
+	}
+	return raiz;
 }
 
-void insertFixUp(RBTree **raiz, RBTree *child)
+void libera_NO(struct NO *no)
 {
-  RBTree *tio;
-
-  while ((child != *raiz) && (child->pai->cor == false))
-  {
-
-    if (child->pai == child->pai->pai->esq)
-    {
-
-      tio = child->pai->pai->dir;
-
-      // caso 1:
-      if ((tio != NULL) && (tio->cor == false))
-      {
-        child->pai->cor = true;
-        tio->cor = true;
-        child->pai->pai->cor = false;
-        child = child->pai->pai;
-      }
-      else
-      {
-
-        // caso 2
-        if (child == child->pai->dir)
-        {
-          child = child->pai;
-          rotacaoSimplesEsquerda(raiz, child);
-        }
-
-        // caso 3
-        child->pai->cor = true;
-        child->pai->pai->cor = false;
-        rotacaoSimplesDireita(raiz, child->pai->pai);
-      }
-    }
-    else
-    {
-
-      tio = child->pai->pai->esq;
-
-      // caso 1
-      if ((tio != NULL) && (tio->cor == false))
-      {
-        child->pai->cor = true;
-        tio->cor = true;
-        child->pai->pai->cor = false;
-        child = child->pai->pai;
-      }
-      else
-      {
-
-        // caso 2
-        if (child == child->pai->esq)
-        {
-          child = child->pai;
-          rotacaoSimplesDireita(raiz, child);
-        }
-
-        // caso 3
-        child->pai->cor = true;
-        child->pai->pai->cor = false;
-        rotacaoSimplesEsquerda(raiz, child->pai->pai);
-      }
-    }
-  }
-
-  (*raiz)->cor = true;
+	if (no == NULL)
+		return;
+	libera_NO(no->esq);
+	libera_NO(no->dir);
+	free(no);
+	no = NULL;
 }
 
-void insertTreeRB(RBTree **t, RBTree **pai, RBTree **raiz, RecordRB r)
+void libera_RBTree(RBTree *raiz)
 {
-
-  if (*t == NULL)
-  {
-    *t = new RBTree;
-    (*t)->esq = NULL;
-    (*t)->dir = NULL;
-    (*t)->pai = pai != t ? *pai : NULL;
-    (*t)->cor = false; // false: vermelho  true:preto
-    (*t)->reg = r;
-    insertFixUp(raiz, *t);
-  }
-  else
-  {
-
-    if (r.key < (*t)->reg.key)
-    {
-      insertTreeRB(&(*t)->esq, t, raiz, r);
-      return;
-    }
-
-    if (r.key > (*t)->reg.key)
-    {
-      insertTreeRB(&(*t)->dir, t, raiz, r);
-      return;
-    }
-  }
+	if (raiz == NULL)
+		return;
+	libera_NO(*raiz);
+	free(raiz);
 }
 
-void pesquisa(RBTree **t, RBTree **aux, RecordRB r)
+float consulta_RBTree(RBTree *raiz, float valor)
 {
-
-  if (*t == NULL)
-  {
-    return;
-  }
-
-  if ((*t)->reg.key > r.key)
-  {
-    pesquisa(&(*t)->esq, aux, r);
-    return;
-  }
-  if ((*t)->reg.key < r.key)
-  {
-    pesquisa(&(*t)->dir, aux, r);
-    return;
-  }
-
-  *aux = *t;
+	if (raiz == NULL)
+		return 0;
+	struct NO *atual = *raiz;
+	while (atual != NULL)
+	{
+		if (valor == atual->info)
+		{
+			return 1;
+		}
+		if (valor > atual->info)
+			atual = atual->dir;
+		else
+			atual = atual->esq;
+	}
+	return 0;
 }
 
-void rotacaoSimplesEsquerda(RBTree **raiz, RBTree *child)
+struct NO *rotacionaEsquerda(struct NO *A)
 {
-  RBTree *x, *y;
-
-  x = child;
-  y = child->dir;
-  x->dir = y->esq;
-
-  if (y->esq != NULL)
-    y->esq->pai = x;
-
-  y->pai = x->pai;
-
-  if (x->pai == NULL)
-    *raiz = y;
-
-  else
-  {
-
-    if (x == x->pai->esq)
-      x->pai->esq = y;
-
-    else
-      x->pai->dir = y;
-  }
-
-  y->esq = x;
-  x->pai = y;
+	struct NO *B = A->dir;
+	A->dir = B->esq;
+	B->esq = A;
+	B->cor = A->cor;
+	A->cor = RED;
+	return B;
 }
 
-void rotacaoSimplesDireita(RBTree **raiz, RBTree *child)
+struct NO *rotacionaDireita(struct NO *A)
 {
-  RBTree *x, *y;
-
-  x = child;
-  y = child->esq;
-  x->esq = y->dir;
-
-  if (y->dir != NULL)
-    y->dir->pai = x;
-
-  y->pai = x->pai;
-
-  if (x->pai == NULL)
-  {
-    *raiz = y;
-  }
-
-  else
-  {
-
-    if (x == x->pai->dir)
-      x->pai->dir = y;
-
-    else
-      x->pai->esq = y;
-  }
-
-  y->dir = x;
-  x->pai = y;
+	struct NO *B = A->esq;
+	A->esq = B->dir;
+	B->dir = A;
+	B->cor = A->cor;
+	A->cor = RED;
+	return B;
 }
 
-void preordem(RBTree *t)
+int cor(struct NO *H)
 {
-  if (!(t == NULL))
-  {
-    printf("%f - %s\t", t->reg.key, t->cor ? "black" : "red");
-    preordem(t->esq);
-    preordem(t->dir);
-  }
+	if (H == NULL)
+		return BLACK;
+	else
+		return H->cor;
 }
 
-void central(RBTree *t)
+void trocaCor(struct NO *H)
 {
-  if (!(t == NULL))
-  {
-    central(t->esq);
-    printf("%f - %s\t", t->reg.key, t->cor ? "black" : "red");
-    central(t->dir);
-  }
+	H->cor = !H->cor;
+	if (H->esq != NULL)
+		H->esq->cor = !H->esq->cor;
+	if (H->dir != NULL)
+		H->dir->cor = !H->dir->cor;
 }
 
-void posordem(RBTree *t)
+struct NO *insereNO(struct NO *H, float valor, int *resp)
 {
-  if (!(t == NULL))
-  {
-    posordem(t->esq);
-    posordem(t->dir);
-    printf("%f - %s\t", t->reg.key, t->cor ? "black" : "red");
-  }
+	if (H == NULL)
+	{
+		struct NO *novo;
+		novo = (struct NO *)malloc(sizeof(struct NO));
+		if (novo == NULL)
+		{
+			*resp = 0;
+			return NULL;
+		}
+
+		novo->info = valor;
+		novo->cor = RED;
+		novo->dir = NULL;
+		novo->esq = NULL;
+		*resp = 1;
+		return novo;
+	}
+
+	if (valor == H->info)
+		*resp = 0; // Valor duplicado
+	else
+	{
+		if (valor < H->info)
+			H->esq = insereNO(H->esq, valor, resp);
+		else
+			H->dir = insereNO(H->dir, valor, resp);
+	}
+
+	if (cor(H->dir) == RED && cor(H->esq) == BLACK)
+		H = rotacionaEsquerda(H);
+
+	if (cor(H->esq) == RED && cor(H->esq->esq) == RED)
+		H = rotacionaDireita(H);
+
+	if (cor(H->esq) == RED && cor(H->dir) == RED)
+		trocaCor(H);
+
+	return H;
 }
 
-RBTree *Insert500EntriesinRBTree(RBTree *t, RecordRB r_500entries)
+float insere_RBTree(RBTree *raiz, float valor)
 {
+	int resp;
 
-  ifstream entries_file;
-  string number_in_string;
-  float number;
+	*raiz = insereNO(*raiz, valor, &resp);
+	if ((*raiz) != NULL)
+		(*raiz)->cor = BLACK;
 
-  entries_file.open("src/files/500entries.txt");
-  while (!entries_file.eof())
-  {
-    getline(entries_file, number_in_string);
-    istringstream in(number_in_string);
-    in >> number;
-    r_500entries.key = number;
-    insertTreeRB(&t, &t, &t, r_500entries);
-  }
-
-  return t;
+	return resp;
 }
 
-RBTree *Insert5000EntriesinRBTree(RBTree *t, RecordRB r_5000entries)
+struct NO *balancear(struct NO *H)
 {
-  ifstream entries_file;
-  string number_in_string;
-  float number;
 
-  entries_file.open("src/files/5000entries.txt");
-  while (!entries_file.eof())
-  {
-    getline(entries_file, number_in_string);
-    istringstream in(number_in_string);
-    in >> number;
-    r_5000entries.key = number;
-    insertTreeRB(&t, &t, &t, r_5000entries);
-  }
+	if (cor(H->dir) == RED)
+		H = rotacionaEsquerda(H);
 
-  return t;
+	if (H->esq != NULL && cor(H->esq) == RED && cor(H->esq->esq) == RED)
+		H = rotacionaDireita(H);
+
+	if (cor(H->esq) == RED && cor(H->dir) == RED)
+		trocaCor(H);
+
+	return H;
 }
 
-RBTree *Insert50000EntriesinRBTree(RBTree *t, RecordRB r_50000entries)
+struct NO *move2EsqRED(struct NO *H)
 {
-
-  ifstream entries_file;
-  string number_in_string;
-  float number;
-
-  entries_file.open("src/files/50000entries.txt");
-  while (!entries_file.eof())
-  {
-    getline(entries_file, number_in_string);
-    istringstream in(number_in_string);
-    in >> number;
-    r_50000entries.key = number;
-    insertTreeRB(&t, &t, &t, r_50000entries);
-  }
-
-  return t;
+	trocaCor(H);
+	if (cor(H->dir->esq) == RED)
+	{
+		H->dir = rotacionaDireita(H->dir);
+		H = rotacionaEsquerda(H);
+		trocaCor(H);
+	}
+	return H;
 }
 
-RBTree *Insert500000EntriesinRBTree(RBTree *t, RecordRB r_500000entries)
+struct NO *move2DirRED(struct NO *H)
 {
-
-  ifstream entries_file;
-  string number_in_string;
-  float number;
-
-  entries_file.open("src/files/500000entries.txt");
-  while (!entries_file.eof())
-  {
-    getline(entries_file, number_in_string);
-    istringstream in(number_in_string);
-    in >> number;
-    r_500000entries.key = number;
-    insertTreeRB(&t, &t, &t, r_500000entries);
-  }
-
-  return t;
+	trocaCor(H);
+	if (cor(H->esq->esq) == RED)
+	{
+		H = rotacionaDireita(H);
+		trocaCor(H);
+	}
+	return H;
 }
 
-void SearchAndRemoveRB500Entries(RBTree *raizRB500entries, vector<float> query_numbers)
+struct NO *removerMenor(struct NO *H)
 {
-  RecordRB r;
-  RBTree *aux = CreateRBTree();
+	if (H->esq == NULL)
+	{
+		free(H);
+		return NULL;
+	}
+	if (cor(H->esq) == BLACK && cor(H->esq->esq) == BLACK)
+		H = move2EsqRED(H);
 
-  for (size_t i = 0; i < query_numbers.size(); i++)
-  {
-    r.key = query_numbers.at(i);
-    pesquisa(&raizRB500entries, &aux, r);
-  }
+	H->esq = removerMenor(H->esq);
+	return balancear(H);
 }
 
-void SearchAndRemoveRB5000Entries(RBTree *raizRB5000entries, vector<float> query_numbers)
+struct NO *procuraMenor(struct NO *atual)
 {
-  RecordRB r;
-  RBTree *aux = CreateRBTree();
-
-  for (size_t i = 0; i < query_numbers.size(); i++)
-  {
-    r.key = query_numbers.at(i);
-    pesquisa(&raizRB5000entries, &aux, r);
-  }
+	struct NO *no1 = atual;
+	struct NO *no2 = atual->esq;
+	while (no2 != NULL)
+	{
+		no1 = no2;
+		no2 = no2->esq;
+	}
+	return no1;
 }
 
-void SearchAndRemoveRB50000Entries(RBTree *raizRB50000entries, vector<float> query_numbers)
+struct NO *remove_NO(struct NO *H, float valor)
 {
-  RecordRB r;
-  RBTree *aux = CreateRBTree();
+	if (valor < H->info)
+	{
+		if (cor(H->esq) == BLACK && cor(H->esq->esq) == BLACK)
+			H = move2EsqRED(H);
 
-  for (size_t i = 0; i < query_numbers.size(); i++)
-  {
-    r.key = query_numbers.at(i);
-    pesquisa(&raizRB50000entries, &aux, r);
-  }
+		H->esq = remove_NO(H->esq, valor);
+	}
+	else
+	{
+		if (cor(H->esq) == RED)
+			H = rotacionaDireita(H);
+
+		if (valor == H->info && (H->dir == NULL))
+		{
+			free(H);
+			return NULL;
+		}
+
+		if (cor(H->dir) == BLACK && cor(H->dir->esq) == BLACK)
+			H = move2DirRED(H);
+
+		if (valor == H->info)
+		{
+			struct NO *x = procuraMenor(H->dir);
+			H->info = x->info;
+			H->dir = removerMenor(H->dir);
+		}
+		else
+			H->dir = remove_NO(H->dir, valor);
+	}
+	return balancear(H);
 }
 
-void SearchAndRemoveRB500000Entries(RBTree *raizRB500000entries, vector<float> query_numbers)
+float remove_RBTree(RBTree *raiz, float valor)
 {
-  RecordRB r;
-  RBTree *aux = CreateRBTree();
+	if (consulta_RBTree(raiz, valor))
+	{
+		struct NO *h = *raiz;
+		*raiz = remove_NO(h, valor);
+		if (*raiz != NULL)
+			(*raiz)->cor = BLACK;
+		return 1;
+	}
+	else
+		return 0;
+}
 
-  for (size_t i = 0; i < query_numbers.size(); i++)
-  {
-    r.key = query_numbers.at(i);
-    pesquisa(&raizRB500000entries, &aux, r);
-  }
+void emOrdem_RBTree(RBTree *raiz, int H)
+{
+	if (raiz == NULL)
+		return;
+
+	if (*raiz != NULL)
+	{
+		emOrdem_RBTree(&((*raiz)->esq), H + 1);
+
+		if ((*raiz)->cor == RED)
+			printf("%f\n", (*raiz)->info);
+		else
+			printf("%f\n", (*raiz)->info);
+
+		emOrdem_RBTree(&((*raiz)->dir), H + 1);
+	}
+}
+
+void SearchAndRemoveRB500Entries(RBTree *RB500entries, vector<float> query_numbers)
+{
+	size_t time;
+
+	time = clock();
+	for (size_t i = 0; i < query_numbers.size(); i++)
+	{
+		consulta_RBTree(RB500entries, query_numbers.at(i));
+	}
+	time = clock() - time;
+	cout << "\nPesquisa: " << float(time) / CLOCKS_PER_SEC << " segundos";
+
+	time = clock();
+	for (size_t i = 0; i < query_numbers.size(); i++)
+	{
+		remove_RBTree(RB500entries, query_numbers.at(i));
+	}
+	time = clock() - time;
+	cout << "\nRemoção: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
+}
+
+void SearchAndRemoveRB5000Entries(RBTree *RB5000entries, vector<float> query_numbers)
+{
+
+	size_t time;
+
+	time = clock();
+	for (size_t i = 0; i < query_numbers.size(); i++)
+	{
+		consulta_RBTree(RB5000entries, query_numbers.at(i));
+	}
+	time = clock() - time;
+	cout << "\nPesquisa: " << float(time) / CLOCKS_PER_SEC << " segundos";
+
+	time = clock();
+	for (size_t i = 0; i < query_numbers.size(); i++)
+	{
+		remove_RBTree(RB5000entries, query_numbers.at(i));
+	}
+	time = clock() - time;
+	cout << "\nRemoção: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
+}
+void SearchAndRemoveRB50000Entries(RBTree *RB50000entries, vector<float> query_numbers)
+{
+	size_t time;
+
+	time = clock();
+	for (size_t i = 0; i < query_numbers.size(); i++)
+	{
+		consulta_RBTree(RB50000entries, query_numbers.at(i));
+	}
+	time = clock() - time;
+	cout << "\nPesquisa: " << float(time) / CLOCKS_PER_SEC << " segundos";
+
+	time = clock();
+	for (size_t i = 0; i < query_numbers.size(); i++)
+	{
+		remove_RBTree(RB50000entries, query_numbers.at(i));
+	}
+	time = clock() - time;
+	cout << "\nRemoção: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
+}
+void SearchAndRemoveRB500000Entries(RBTree *RB500000entries, vector<float> query_numbers)
+{
+	size_t time;
+
+	time = clock();
+	for (size_t i = 0; i < query_numbers.size(); i++)
+	{
+		consulta_RBTree(RB500000entries, query_numbers.at(i));
+	}
+	time = clock() - time;
+	cout << "\nPesquisa: " << float(time) / CLOCKS_PER_SEC << " segundos";
+
+	time = clock();
+	for (size_t i = 0; i < query_numbers.size(); i++)
+	{
+		remove_RBTree(RB500000entries, query_numbers.at(i));
+	}
+	time = clock() - time;
+	cout << "\nRemoção: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
 }
