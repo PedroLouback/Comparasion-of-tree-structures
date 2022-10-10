@@ -3,7 +3,7 @@
 void TestsBinaryTree(vector<float> query_numbers)
 {
 
-    size_t time;   
+    size_t time;
     cout << "\n||TEMPOS PARA ESTRUTURA ÁRVORE BINÁRIA||";
     // Inserção, remoção e pesquisa na árvore binária
     cout << "\n500 Entradas:";
@@ -99,7 +99,7 @@ void TestsRBTree(vector<float> query_numbers)
     string number_in_string;
     float number;
     size_t time;
-    
+
     cout << "\n||TEMPOS PARA ESTRUTURA ÁRVORE REDBLACK||";
     // Insere, pesquisa e remove na árvore RedBlack de 500 entradas
     cout << "\n500 Entradas:";
@@ -118,7 +118,7 @@ void TestsRBTree(vector<float> query_numbers)
     entries_file.close();
     SearchAndRemoveRB500Entries(RB500entries, query_numbers);
 
-    //Insere, pesquisa e remove na árvore RedBlack de 5000 entradas
+    // Insere, pesquisa e remove na árvore RedBlack de 5000 entradas
     cout << "\n5000 Entradas:";
     time = clock();
     RBTree *RB5000entries = cria_ArvoreRB();
@@ -172,6 +172,166 @@ void TestsRBTree(vector<float> query_numbers)
 
 void TestsWithVectors(vector<float> query_numbers)
 {
-    
+    ifstream entries_file;
+    string number_in_string;
+    float number;
+    size_t time;
+    int size;
 
+    cout << "\n||TEMPOS PARA VETORES||";
+    cout << "\n500 Entradas: ";
+    // Criação e ordenação do vetor de 500 entradas
+    vector<float> vector_500entries;
+    entries_file.open("src/files/500entries.txt");
+    while (!entries_file.eof())
+    {
+        getline(entries_file, number_in_string);
+        istringstream in(number_in_string);
+        in >> number;
+        vector_500entries.push_back(number);
+        size = vector_500entries.size();
+    }
+    time = clock();
+    vector_500entries = heapSort(vector_500entries, size);
+    time = clock() - time;
+    cout << "\nOrdenação: " << float(time) / CLOCKS_PER_SEC << " segundos";
+    entries_file.close();
+    time = clock();
+    for (size_t i = 0; i < query_numbers.size(); i++)
+    {
+        binarySearch(vector_500entries, 0, size, query_numbers.at(i));
+    }
+    time = clock() - time;
+    cout << "\nPesquisa Binária: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
+
+    // Criação e ordenação do vetor de 5000 entradas
+    cout << "\n5000 Entradas: ";
+    vector<float> vector_5000entries;
+    entries_file.open("src/files/5000entries.txt");
+    while (!entries_file.eof())
+    {
+        getline(entries_file, number_in_string);
+        istringstream in(number_in_string);
+        in >> number;
+        vector_5000entries.push_back(number);
+        size = vector_5000entries.size();
+    }
+    time = clock();
+    vector_5000entries = heapSort(vector_5000entries, size);
+    time = clock() - time;
+    cout << "\nOrdenação: " << float(time) / CLOCKS_PER_SEC << " segundos";
+    entries_file.close();
+    time = clock();
+    for (size_t i = 0; i < query_numbers.size(); i++)
+    {
+        binarySearch(vector_5000entries, 0, size, query_numbers.at(i));
+    }
+    time = clock() - time;
+    cout << "\nPesquisa Binária: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
+
+    // Criação e ordenação do vetor de 50000 entradas
+    cout << "\n50000 Entradas: ";
+    vector<float> vector_50000entries;
+    entries_file.open("src/files/50000entries.txt");
+    while (!entries_file.eof())
+    {
+        getline(entries_file, number_in_string);
+        istringstream in(number_in_string);
+        in >> number;
+        vector_50000entries.push_back(number);
+        size = vector_50000entries.size();
+    }
+    time = clock();
+    vector_50000entries = heapSort(vector_50000entries, size);
+    time = clock() - time;
+    cout << "\nOrdenação: " << float(time) / CLOCKS_PER_SEC << " segundos";
+    entries_file.close();
+    time = clock();
+    for (size_t i = 0; i < query_numbers.size(); i++)
+    {
+        binarySearch(vector_50000entries, 0, size, query_numbers.at(i));
+    }
+    time = clock() - time;
+    cout << "\nPesquisa Binária: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
+
+    // Criação, ordenação e pesquisa do vetor de 500000 entradas
+    cout << "\n500000 Entradas: ";
+    vector<float> vector_500000entries;
+    entries_file.open("src/files/500000entries.txt");
+    while (!entries_file.eof())
+    {
+        getline(entries_file, number_in_string);
+        istringstream in(number_in_string);
+        in >> number;
+        vector_500000entries.push_back(number);
+        size = vector_500000entries.size();
+    }
+    time = clock();
+    vector_500000entries = heapSort(vector_500000entries, size);
+    time = clock() - time;
+    cout << "\nOrdenação: " << float(time) / CLOCKS_PER_SEC << " segundos";
+    entries_file.close();
+    time = clock();
+    for (size_t i = 0; i < query_numbers.size(); i++)
+    {
+        binarySearch(vector_500000entries, 0, size, query_numbers.at(i));
+    }
+    time = clock() - time;
+    cout << "\nPesquisa Binária: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
+}
+
+int binarySearch(vector<float> vector_entries, int l, int r, float number)
+{
+    if (r >= l)
+    {
+        int mid = l + (r - l) / 2;
+
+        if (vector_entries[mid] == number)
+            return mid;
+        if (vector_entries[mid] > number)
+            return binarySearch(vector_entries, l, mid - 1, number);
+        return binarySearch(vector_entries, mid + 1, r, number);
+    }
+    return -1;
+}
+
+vector<float> heapify(vector<float> vector_entries, int n, int i)
+{
+    int largest = i;
+    int l = 2 * i + 1;
+    int r = 2 * i + 2;
+
+
+    if (l < n && vector_entries[l] > vector_entries[largest])
+        largest = l;
+
+    if (r < n && vector_entries[r] > vector_entries[largest])
+        largest = r;
+
+
+    if (largest != i)
+    {
+        swap(vector_entries[i], vector_entries[largest]);
+
+
+        vector_entries = heapify(vector_entries, n, largest);
+    }
+    return vector_entries;
+}
+
+vector<float> heapSort(vector<float> vector_entries, int n)
+{
+
+    for (int i = n / 2 - 1; i >= 0; i--)
+        vector_entries = heapify(vector_entries, n, i);
+
+    for (int i = n - 1; i >= 0; i--)
+    {
+
+        swap(vector_entries[0], vector_entries[i]);
+
+
+        vector_entries = heapify(vector_entries, i, 0);
+    }
+    return vector_entries;
 }
