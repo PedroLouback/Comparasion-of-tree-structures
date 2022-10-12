@@ -10,7 +10,8 @@ SRC      :=  $(wildcard src/*.cpp)  \
 $(wildcard src/binary_tree/*.cpp)  \
 $(wildcard src/avl_tree/*.cpp)  \
 $(wildcard src/redblack_tree/*.cpp)  \
-$(wildcard src/files/*.cpp)
+$(wildcard src/maps/*.cpp)  \
+$(wildcard src/files/*.cpp) 
  
 OBJECTS := $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 

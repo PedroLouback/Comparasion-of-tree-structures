@@ -7,3 +7,4 @@ build/objects/src/binary_tree/tree.o
 build/objects/src/files/files.o
 build/objects/src/redblack_tree/rb.o
 build/objects/src/tests.o
+build/objects/src/maps/maps.o

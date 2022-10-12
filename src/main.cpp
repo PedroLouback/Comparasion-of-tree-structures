@@ -9,7 +9,8 @@ int main()
     TestsBinaryTree(query_numbers);
     TestsAVLTree(query_numbers);
     TestsRBTree(query_numbers);
-    TestsWithVectors(query_numbers);
+    TestsVectors(query_numbers);
+    TestsMaps(query_numbers);
 
     return 0;
 }

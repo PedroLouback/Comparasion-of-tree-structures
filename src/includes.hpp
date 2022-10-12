@@ -2,4 +2,5 @@
 #include "binary_tree/tree.hpp"
 #include "files/files.hpp"
 #include "redblack_tree/rb.hpp"
+#include "maps/maps.hpp"
 #include "tests.hpp"

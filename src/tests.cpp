@@ -170,7 +170,7 @@ void TestsRBTree(vector<float> query_numbers)
     SearchAndRemoveRB500Entries(RB500000entries, query_numbers);
 }
 
-void TestsWithVectors(vector<float> query_numbers)
+void TestsVectors(vector<float> query_numbers)
 {
     ifstream entries_file;
     string number_in_string;
@@ -254,30 +254,62 @@ void TestsWithVectors(vector<float> query_numbers)
     time = clock() - time;
     cout << "\nPesquisa Binária: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
 
-    // Criação, ordenação e pesquisa do vetor de 500000 entradas
-    cout << "\n500000 Entradas: ";
-    vector<float> vector_500000entries;
-    entries_file.open("src/files/500000entries.txt");
-    while (!entries_file.eof())
-    {
-        getline(entries_file, number_in_string);
-        istringstream in(number_in_string);
-        in >> number;
-        vector_500000entries.push_back(number);
-        size = vector_500000entries.size();
-    }
+    // // Criação, ordenação e pesquisa do vetor de 500000 entradas
+    // cout << "\n500000 Entradas: ";
+    // vector<float> vector_500000entries;
+    // entries_file.open("src/files/500000entries.txt");
+    // while (!entries_file.eof())
+    // {
+    //     getline(entries_file, number_in_string);
+    //     istringstream in(number_in_string);
+    //     in >> number;
+    //     vector_500000entries.push_back(number);
+    //     size = vector_500000entries.size();
+    // }
+    // time = clock();
+    // vector_500000entries = heapSort(vector_500000entries, size);
+    // time = clock() - time;
+    // cout << "\nOrdenação: " << float(time) / CLOCKS_PER_SEC << " segundos";
+    // entries_file.close();
+    // time = clock();
+    // for (size_t i = 0; i < query_numbers.size(); i++)
+    // {
+    //     binarySearch(vector_500000entries, 0, size, query_numbers.at(i));
+    // }
+    // time = clock() - time;
+    // cout << "\nPesquisa Binária: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
+}
+
+void TestesMaps(vector<float> query_numbers)
+{
+    size_t time;
+
+    cout << "\n||TEMPOS PARA ESTRUTURAS MAPs||";
+    cout << "\n500 Entradas:";
     time = clock();
-    vector_500000entries = heapSort(vector_500000entries, size);
+    Insert500EntriesinMap();
     time = clock() - time;
-    cout << "\nOrdenação: " << float(time) / CLOCKS_PER_SEC << " segundos";
-    entries_file.close();
+    cout << "\nMontagem de estrutura: " << float(time) / CLOCKS_PER_SEC << " segundos";
+
+    cout << "\n5000 Entradas:";
     time = clock();
-    for (size_t i = 0; i < query_numbers.size(); i++)
-    {
-        binarySearch(vector_500000entries, 0, size, query_numbers.at(i));
-    }
+    Insert5000EntriesinMap();
     time = clock() - time;
-    cout << "\nPesquisa Binária: " << float(time) / CLOCKS_PER_SEC << " segundos\n";
+    cout << "\nMontagem de estrutura: " << float(time) / CLOCKS_PER_SEC << " segundos";
+
+    cout << "\n50000 Entradas:";
+    time = clock();
+    Insert50000EntriesinMap();
+    time = clock() - time;
+    cout << "\nMontagem de estrutura: " << float(time) / CLOCKS_PER_SEC << " segundos";
+
+    cout << "\n500000 Entradas:";
+    time = clock();
+    Insert500000EntriesinMap();
+    time = clock() - time;
+    cout << "\nMontagem de estrutura: " << float(time) / CLOCKS_PER_SEC << " segundos";
+
+    cout << query_numbers.at(1) << endl;
 }
 
 int binarySearch(vector<float> vector_entries, int l, int r, float number)
@@ -301,18 +333,15 @@ vector<float> heapify(vector<float> vector_entries, int n, int i)
     int l = 2 * i + 1;
     int r = 2 * i + 2;
 
-
     if (l < n && vector_entries[l] > vector_entries[largest])
         largest = l;
 
     if (r < n && vector_entries[r] > vector_entries[largest])
         largest = r;
 
-
     if (largest != i)
     {
         swap(vector_entries[i], vector_entries[largest]);
-
 
         vector_entries = heapify(vector_entries, n, largest);
     }
@@ -329,7 +358,6 @@ vector<float> heapSort(vector<float> vector_entries, int n)
     {
 
         swap(vector_entries[0], vector_entries[i]);
-
 
         vector_entries = heapify(vector_entries, i, 0);
     }
