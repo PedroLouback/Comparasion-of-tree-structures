@@ -1,16 +1,7 @@
 #ifndef RB_HPP
 #define RB_HPP
 
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <vector>
-#include <fstream>
-#include <random>
-#include <iomanip>
-#include <string>
-#include <sstream>
+#include "../includes.hpp"
 
 using namespace std;
 

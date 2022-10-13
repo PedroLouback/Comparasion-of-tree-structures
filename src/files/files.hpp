@@ -1,13 +1,7 @@
 #ifndef FILES_HPP
 #define FILES_HPP
 
-#include <iostream>
-#include <fstream>
-#include <random>
-#include <iomanip>
-#include <string>
-#include <sstream>
-#include <ctime>
+#include "../includes.hpp"
 
 using namespace std;
 

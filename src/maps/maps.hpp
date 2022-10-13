@@ -1,14 +1,7 @@
 #ifndef MAPS_HPP
 #define MAPS_HPP
 
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <vector>
-#include <fstream>
-#include <unordered_map>
-#include <map>
-#include <sstream>
+#include "../includes.hpp"
 
 using namespace std;
 

@@ -1,11 +1,8 @@
 #ifndef FILA_HPP
 #define FILA_HPP
 
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
 #include "tree.hpp"
+#include "../includes.hpp"
 
 using namespace std;
 
