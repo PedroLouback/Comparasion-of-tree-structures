@@ -1,6 +1,8 @@
 #ifndef TESTS_HPP
 #define TESTS_HPP
 
+#include <algorithm>
+#include <bits/stdc++.h>
 #include "includes.hpp"
 
 using namespace std;

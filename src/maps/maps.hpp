@@ -12,14 +12,14 @@
 
 using namespace std;
 
-void Insert500EntriesinMap();
-void Insert5000EntriesinMap();
-void Insert50000EntriesinMap();
-void Insert500000EntriesinMap();
+void InsertAndSearch500EntriesinMap(vector<float> query_numbers);
+void InsertAndSearch5000EntriesinMap(vector<float> query_numbers);
+void InsertAndSearch50000EntriesinMap(vector<float> query_numbers);
+void InsertAndSearch500000EntriesinMap(vector<float> query_numbers);
 
-void Insert500EntriesinUnorderedMap();
-void Insert5000EntriesinUnorderedMap();
-void Insert50000EntriesinUnorderedMap();
-void Insert500000EntriesinUnorderedMap();
+void InsertAndSearch500EntriesinUnorderedMap(vector<float> query_numbers);
+void InsertAndSearch5000EntriesinUnorderedMap(vector<float> query_numbers);
+void InsertAndSearch50000EntriesinUnorderedMap(vector<float> query_numbers);
+void InsertAndSearch500000EntriesinUnorderedMap(vector<float> query_numbers);
 
 #endif
