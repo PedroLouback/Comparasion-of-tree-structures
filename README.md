@@ -8,19 +8,21 @@
 
 <p align="center">
     <a href="#apresentação">Apresentação</a> •
-    <a href="#inntrodução">Introdução</a> • 
-    <a href="#estruturas-e-suas-implementações">Estruturas e suas implementações</a> • 
+    <a href="#introdução">Introdução</a> • 
+    <a href="#estruturas-e-suas-implementações">Estruturas e suas implementações</a> •
+    <a href="#resultados-e-análises">Resultados e Análises</a> •
     <a href="#bibliotecas">Bibliotecas</a> •
     <a href="#compilação-e-execução">Compilação e Execução</a> •
     <a href="#referências">Referências</a> •
     <a href="#autor">Autor</a>
+
 </p>
 
 ---
 
 ## Apresentação
 
-Foi proposto pelo professor [Michel Pires da Silva](http://lattes.cnpq.br/1449902596670082) da matéria de `Arquitetura e Estruturas de Dados 2 do 4º Período do curso de Engenharia de Computação` um trabalho relacionado ao conteúdo passado em suas aulas teóricas que são `Estrutura de Dados Árvore`, onde foi introduzido uma comparação de tempo entre diversas implementações sob diferentes volumes de dados em três tipos de árvores sendo elas, <a href="#•-árvore-binária-de-pesquisa">Árvore Binária de Pesquisa</a>, <a href="#•-árvore-avl">Árvore AVL</a> e <a href="#•-árvore-redblack">Árvore RedBlack</a> e outras diferentes estruturas sendo __vectors__ e <a href="#maps">MAPs</a>. Portanto foi desenvolvido o seguinte desafio:
+Foi proposto pelo professor [Michel Pires da Silva](http://lattes.cnpq.br/1449902596670082) da matéria de `Arquitetura e Estruturas de Dados 2 do 4º Período do curso de Engenharia de Computação` um trabalho relacionado ao conteúdo passado em suas aulas teóricas que são `Estrutura de Dados Árvore`, onde foi introduzido uma comparação de tempo entre diversas implementações sob diferentes volumes de dados em três tipos de árvores sendo elas, <a href="#•-árvore-binária-de-pesquisa">Árvore Binária de Pesquisa</a>, <a href="#•-árvore-avl">Árvore AVL</a> e <a href="#•-árvore-redblack">Árvore RedBlack</a> e outras diferentes estruturas sendo __vectors__ e <a href="#•-estruturas-maps">MAPs</a>. Portanto foi proposto o seguinte desafio:
 
 *Chegou o momento de compararmos tais estruturas, observando seu comportamento sob diferentes volumes de dados. Para tanto, elabore arquivos que contenham 500 , 5000 , 50.000 , 500.000 entradas numéricas do tipo ponto flutuante. Para tanto, tente evitar repetições de valores em grande escala para que possamos ter uma estrutura profunda. Considere produzir os menores a partir dos maiores volumes de forma randômica. Feito a isso, vamos testar os seguintes processos:*
 
@@ -152,7 +154,7 @@ antecessor(T,x)
 3 x = T
 4 T = T.esquerda
 5 free x
-````
+```
 
 ```c
 RemoveTree(T,x)
@@ -173,7 +175,7 @@ RemoveTree(T,x)
 15 aux = y
 16 y = y.direita
 17 free aux
-````
+```
 
 * *T* representa uma estrutura de árvore e *x* um nó
 
@@ -182,7 +184,7 @@ __*<u>Testes utilizando Árvore Binária de Pesquisa</u>*__
 Após ser feita a implementação de todos os algoritmos básicos presentes em uma `Árvore Binária de Pesquisa` foi possível realizar os testes propostos em  <a href="#apresentação">Apresentação</a> obtendo então os seguintes resultados informados na tabela a seguir:
 
 <p align="left">
-<img src="imgs/tabelaABP.png" width="1100" height="115"/>
+<img src="imgs/tabelaABP.png" width="1170" height="125"/>
 </p>
 <i>Tabela 2: Tempos médios de comparações para pesquisa, remoção e motagem da estrutura de Árvore Binária de Pesquisa.</i>
 <br><br>
@@ -341,19 +343,19 @@ RemoveTree(T,F,x)
 9     aux = y
 10     y = y.esquerda
 11     free aux
-12     rebalenceTree(f); //Função que verifica os pesos da árvore e balanceia novamente se necessário
+12     rebalenceTree(f) //Função que verifica os pesos da árvore e balanceia novamente se necessário
 13 }
 14 if y.esquerda != NULL{
 15     antecessor(y.esquerda, y)
-16     rebalenceTree(T);
-17     rebalenceTree(F);
+16     rebalenceTree(T)
+17     rebalenceTree(F)
 18 }        
 19 aux = y
 20 y = y.direita
 21 free aux
-22 rebalenceTree(T);
-23 rebalenceTree(F);
-````
+22 rebalenceTree(T)
+23 rebalenceTree(F)
+```
 
 * *T* e *F* representam uma estrutura de árvore e *x* um nó.
 
@@ -369,7 +371,7 @@ __*<u>Testes utilizando Árvore AVL</u>*__
 Após ser feita a implementação de todos os algoritmos básicos presentes em uma `Árvore AVL` foi possível realizar os testes propostos em  <a href="#apresentação">Apresentação</a> obtendo então os seguintes resultados informados na tabela a seguir:
 
 <p align="left">
-<img src="imgs/tabelaAVL.png" width="1100" height="115"/>
+<img src="imgs/tabelaAVL.png" width="1170" height="125"/>
 </p>
 <i>Tabela 4: Tempos médios de comparações para pesquisa, remoção e motagem da estrutura de Árvore AVL.</i>
 <br><br>
@@ -388,18 +390,25 @@ Onde os mesmos são fornecidos pelo programa desenvolvido da seguinte forma apó
 
 __*<u>O que é uma Árvore RedBlack?</u>*__
 
-Uma árvore AVL é uma árvore de busca binária de altura balanceada, ou seja, uma árvore balanceada são as árvores que minimizam o número de comparações efetuadas no pior caso para uma busca com chaves de probabilidades de ocorrências identidas, Sendo necessária a reconstrução da árvore para seu estado ideal a cada operação sobre seus nós (inserção ou remoção). A sua diferença de alturas das subárvores á esquerda e á direita de _x_ é no máximo de uma unidade.
+As **Árvores RedBlack** são um dos muitos esquemas de árvores de busca que são "balanceadas" de modo a garantir que operações básicas de conjuntos dinâmicos demorem o tempo $O(log{n})$ no pior caso. Consistindo em uma árvore de busca binária com um bit extra de armazenamento por nó, sendo esse bit sua _cor_, podendo ser vermelha ou preta. Restringindo as cores dos nós em qualquer caminho simples da raiz até uma folha, as árvores vermelho-preto asseguram que o comprimento de nenhum desses caminhos seja maior que duas vezes o de qualquer outro, de modo que a árvore é aproximadamente __balanceada__.
+A **Árvore RedBlack** satisfaz as seguintes propriedades para manter seu balanceamento:
+**1.** Todo nó é vermelho ou preto;
+**2.** A raiz é preta;
+**3.** Toda folha (NULL) é preta;
+**4.** Se um nó é vermelho, então os seus filhos são pretos;
+**5.** Para todo nó, todos os caminhos até as folhas apresentam o mesmo número de nós pretos
+**6.** Para cada nova inserção, o nó criado começa com a cor vermelha
 
 <p align="center">
-<img src="imgs/AVLtree.JPG" width="500px"/>
+<img src="imgs/RBTree.png" width="500px"/>
 </p>
 <p align="center">
-<i>Figura 7: Demonstração de uma Árvore AVL aproximadamente balanceada, uma árvore desbalanceada após remoções e a sua correção resultando em uma Árvore AVL completamente balanceada.</i>
+<i>Figura 12: Exemplo de uma árvore RedBlack.</i>
 </p>
 
-__*<u>Complexidade de uma Árvore AVL</u>*__
+__*<u>Complexidade de uma Árvore RedBlack</u>*__
 
-Todas as operações básicas em uma `Árvore AVL` possuem complexidade $O(log{n})$ e ocupa espaço $O(n)$, sendo _n_ o número de nós da árvore, essa condição provém da sua característica de balanceamento.
+Todas as operações básicas em uma `Árvore RB` possuem complexidade $O(log{n})$ e ocupa espaço $O(n)$, sendo _n_ o número de nós da árvore, essa condição provém da sua característica de balanceamento.
 
 | Algoritmo         |  Caso Médio        | Pior Caso       |         
 | ------------------| ------------------ | --------------- |
@@ -408,227 +417,341 @@ Todas as operações básicas em uma `Árvore AVL` possuem complexidade $O(log{n
 |  `Inserção`       | $O(log{n})$        | $O(log{n})$     |
 |  `Remoção`        | $O(log{n})$        | $O(log{n})$             
 
-<i>Tabela 3: Complexidade de uma Árvore AVL em notação big O.</i>
+<i>Tabela 5: Complexidade de uma Árvore RedBlack em notação big O.</i>
 
-* Logo a árvore AVL é caracterizada por sua eficiência em buscas com chaves de probabilidades de ocorrências idênticas, reduzindo o número médio de comparações necessária para localizar qualquer elemento da árvore em 39 vezes menos.
+* Árvores Red Black são usadas na maioria das bibliotecas de linguagens como **<u>map</u>**, **<u>multimap</u>**, **<u>multset</u>** em C++ e é caracterizada por ser utilizada em aplicações de tempo real (críticas)
 
 __*<u>Operação de Busca</u>*__
 
-A operação de busca por um valor específico implementada no algoritmo através de uma função recursiva como é possível visualizar no pseudocódigo abaixo que foi usado como base para implementação, sendo a mesma utilizada em <a href="#•-árvore-binária-de-pesquisa">Árvore Binária de Pesquisa</a>:
+A operação de busca por um valor específico implementada no algoritmo através de uma função iterativa como é possível visualizar no pseudocódigo abaixo que foi usado como base para implementação:
 
 ```c
-TreeSearch(x,k)
-1 if x == NULL ou k == x.chave
-2   return x
-3 if k < x.chave
-4   return TreeSearch(x.esquerda, k)
-5 else return TreeSearch(x.direita, k)
+RBTreeSearch(T,x)
+1 if T == NULL
+2   return
+3 atual = T
+4 while atual != NULL
+5   if x == atual.valor
+6       return
+7   if x > atua.valor
+8       atual = atual.direita
+9   else
+10      atual = atual.esquerda
 ```
-<i>Explicação:</i> A busca começa examinando o nó raiz. Se a árvore está vazia, o valor procurado não pode existir na árvore. Caso contrário, se o valor é igual a raiz a busca foi bem sucedida. Se o valor é menor do que a raiz, a busca segue pela subárvore esquerda. Igualmente caso o valor é maior do que a raiz, a busca segue pela subárvore direita. Se tornando um processo recursivo até encontrar o valor requerido. Se o valor na for encontrado até a busca chegar na subárvore nula é concluido que o valor não está presente na árvore
+* *T* representa uma estrutura de árvore e *x* um valor do tipo flutuante.
 
 __*<u>Operação de Inserção</u>*__
 
-A operação de inserção é utilizado o procedimento presente na função ___insertTreeAVL()__ onde é necessário uma busca pelo elemento inserido nesta mesma árvore. Após a busca o local correto para a inserção do nó  será em uma subárvore vazia de uma folha da árvore. Depois de inserido o nó, a altura do nó pai e de todos os nós acima deve ser atualizada. Em seguida o algoritmo de rotação simples ou dupla deve ser acionado para o primeiro nó pai desregulado
+A operação de inserção é utilizado o procedimento presente na função ___insertTreeRB()__, sendo considerado uma operação complicada porque pode ferir alguma propriedade deste tipo de árvore, podendo ser implementadas de forma bastante parecida com as respectivas operações nas <a href="#•-árvore-binária-de-pesquisa">Árvores Binárias de Pesquisa</a>, bastanto apenas modificar as cores dos nós para que as propriedades de Árvores RedBlack sejam satisfeitas, utilizando uma função secundária __RBInsertFixUp()__ para restauras essas propriedades na inserção.
 
 ```c
-insertTreeAVL(T,z)
-1 if T == NULL
-2   new(T)
-3   T.item = z
-4   T.peso = 0
-5   T.esquerda = NULL
-6   T.direita = NULL
-7   else if z.chave = T.item.chave
-8       insertTreeAVL(T.esquerda, z)
-9       if (getPeso(T.esquerda) - getPeso(T.direita) = 2)
-10          if z.chave < T.esquerda.item.chave
-11              rotacaoSimplesDireita(T)
-12          else
-13              rotacaoDuplaEsquerdaDireita(T)
-14      else if z.chave > T.item.chave
-15          insertTreeAVL(T.direita, z)
-16          if (getPeso(T.direita) - getPeso(T.esquerda) = 2)
-17              if z.chave > T.direita.item.chave
-18                  rotacaoSimplesEsquerda(T)
-19              else
-20                  rotacaoDuplaDireitaEsquerda(T)
-21 T.peso = PesoMax(getPeso(T.esquerda),getPeso(T.direita))+1
-```
-A inserção demonstrada utilizou de quatro diferentes funções que foram criadas para auxiliar o balanceamento na inserção, sendo essas as 4 diferentes rotações possíveis de visualizar nos exemplos gráficos e respectivos pseudocódigos abaixo:
-
-<p align="center">
-<img src="imgs/rotacaosimples.png" width="550px"/>
-</p>
-<p align="center">
-<i>Figura 8: Exemplo de uma rotação simples à direita.</i>
-</p>
-
-```c++
-rotacaoSimplesDireita(t)
-1 aux = t.left;
-2 t.left = aux.right;
-3 aux.right = t;
-4 t.peso = PesoMax(getPeso(t.left), getPeso(t.right)) + 1;
-5 aux.peso = PesoMax(getPeso(aux.left), t.peso) + 1;
-6 t = aux;
+insertTreeRB(T,z)
+1 y = T.nil
+2 x = T.raiz
+3 while x != T.nil
+4   y = x
+5   if z.chave < x.chave
+6       x = x.esquerda
+7   else x = x.diretia
+8 z.p = y
+9 if y == T.nil
+10  T.raiz = z
+11 else if z.chave < x.chave
+12     y.esquerda = z
+13 else y.direita = z
+14 z.esquerda = T.nil
+15 z.direita = T.nil
+16 z.cor = VERMELHO
+17 RBInsertFixUp(T,z)
 ```
 
-```c++
-rotacaoSimplesEsquerda(t)
-1 aux = t.right;
-2 t.right = aux.left;
-3 aux.left = t;
-4 t.peso = PesoMax(getPeso(t.esquerdo), getPeso(t.direito)) + 1;
-5 aux.peso = PesoMax(getPeso(auxˆ .direito), t.peso) + 1;
-6 raiz = aux;
+```c
+RBInsertFixUp(T,z)
+1 while z.p.cor == VERMELHO
+2   if z.p == z.p.p.esquerda
+3       y = z.p.p.direita
+4       if y.cor == VERMELHO             
+5           z.p.cor = PRETO                //caso 1
+6           y.cor = PRETO                  //caso 1
+7           z.p.p.cor = VERMELHO           //caso 1
+8           z = z.p.p                      //caso 1
+9       else if z = z.p.direita
+10          z = z.p                        //caso 2
+11          rotacaoSimplesEsquerda(T, z)   //caso 2
+12     z.p.cor = PRETO                     //caso 3
+13     z.p.p = VERMELHO                    //caso 3
+14     rotacaoSimplesDireita(T, z.p.p)     //caso 3
+15     else (igual à cláusala then com "direita" e "esquerda" trocadas)
+16 T.raiz.cor = PRETO
 ```
+* *T* representa uma estrutura de árvore e *z* um nó.
 
+<i>Explicação:</i> A operação de inserção em uma `Árvore RedBlack` começa por uma busca da posição onde o novo nó deve ser inserido, partindo-se da raiz em direção aos nós que possuam o valor mais próximo do qual vai ser inserido, onde é feita a verificação de acordo com seus respectivos casos:
+
+**Caso 1:** Caso esta inserção seja feita em uma árvore vazia, basta alterar a cor do nó para preto, satisfazendo assim a propriedade 2;
 <p align="center">
-<img src="imgs/rotacaodupla.png" width="550px"/>
-</p>
-<p align="center">
-<i>Figura 9: Exemplo de uma rotação dupla a esquerda/direita.</i>
+<img src="imgs/caso1RB.png" width="300px"/>
 </p>
 
-```c++
-rotacaoDuplaEsquerdaDireita(t)
-1 rotacaoSimplesEsquerda(t.left);
-2 rotacaoSimplesDireita(t);
-```
+**Caso 2:** Ao inserir x, se o tio de x é vermelho, é necessário fazer a recoloração de seu _a_, _t_ e _p_;
+<p align="center">
+<img src="imgs/caso2RB.png" width="350px"/>
+</p>
 
-```c++
-rotacaoDuplaDireitaEsquerda(t)
-1 rotacaoSimplesDireita(t.right);
-2 rotacaoSimplesEsquerda(t);
-```
+_<b>Obs1:_</b> Se o pai de _a_ é vermelho, o rebalanceamento tem que ser feito novamente.<br>
+_<b>Obs2:_</b> Se _a_ é raiz, então ele deve ser preto!
 
-* *t* representa uma estrutura de árvore e *z* um nó.
+**Caso 3:** Suponha que o tio do elemento inserido é preto. Neste caso, para manter o critério 4 é preciso fazer rotações envolvendo _a_, _t_, _p_ e _x_.
+<br>– Há 4 subcasos que correspondem às 4 rotações possíveis:
+
+<p align="center">
+<img src="imgs/caso3RB.png" width="200px"/>
+</p>
+
+_Caso 3a:_ Rotação à direita;
+<p align="center">
+<img src="imgs/caso3aRB.png" width="450px"/>
+</p>
+
+_Caso 3b:_ Rotação à esquerda;
+<p align="center">
+<img src="imgs/caso3bRB.png" width="450px"/>
+</p>
+
+_Caso 3c:_ Rotação dupla esquerda, podendo ser visto como um caso _3a_ seguido do caso _3b_;
+<p align="center">
+<img src="imgs/caso3cRB.png" width="450px"/>
+</p>
+
+_Caso 3d:_ Rotação dupla direita, podendo ser visto como um caso _3b_ seguido do caso _3a_;
+<p align="center">
+<img src="imgs/caso3dRB.png" width="450px"/>
+</p>
+
+(_OBS: Lembrando que a Árvore RedBlack não possui explicitamente rotações duplas, os exemplos acima de rotações duplas são constituidos de duas rotações simples onde resulta em uma rotação dupla implicitamente_)
 
 __*<u>Operação de Remoção</u>*__
 
-O primeiro passo para remover uma chave na árvore AVL consiste em realizar uma busca binária a partir do nó raiz. Caso a busca encerre em uma subárvore vaiza, então a chave não está na árvore e a remoção não pode ser realizado. Caso a busca encerre em um nó a remoção poderá ser realizada obedecendo os seguintes casos
+A remoção nas árvores RedBlacks se inicia com uma etapa de busca e remoção como nas <a href="#•-árvore-binária-de-pesquisa">Árvores Binárias de Pesquisa</a> convecionais. Então se alguma propriedade da árvore for violada, a árvore deve ser rebalanceada, sendo um procedimento um pouco mais complicado que inserir um nó.
 
-**Caso 1 - Remoção na folha:** A exclusão na folha é a mais simples, batando apenas removê-lo da árvore como no exemplo da figura abaixo:
-
-**Caso 2 - Remoção de nó com um filho:** Ao excluir um nó que possui um filho, o filho vai subir para a posição do pai, bastando apontar o nó pai para a única subárvore e excluir o nó.
-
-**Caso 3 - Remoção de nó com dois filhos:** Neste caso é necessário localizar o nó antecessor ou sucessor, que sempre será um nó folha ou possuirá apenas uma subárvore, copiar a chave do nó antecessor ou sucessor para o nó que deseja excluir e excluir o nó antecessor ou sucessor a partir da respectiva subárvore do nó que deseja excluir.
-
+O procedimento para eliminar um nó de uma árvore RedBlack é baseado no procedimento *remove_RBTree()*, onde primeiramente é necessário a utilização da sub-função *RBTransplant()* que é chamada na função de remoção como é possível visualizar nos respectivos pseudocódigos abaixo:
 
 ```c
-RemoveTree(T,F,x)
-1 y = T.raiz
-2 if y == NULL
-3   return
-4 if x.chave < y.chave
-5     RemoveTree(y.esquerda,T,x)
-6 if x.chave > y.chave
-7     RemoveTree(y.direita,T,x)
-8 if y.direita == NULL{
-9     aux = y
-10     y = y.esquerda
-11     free aux
-12     rebalenceTree(f); //Função que verifica os pesos da árvore e balanceia novamente se necessário
-13 }
-14 if y.esquerda != NULL{
-15     antecessor(y.esquerda, y)
-16     rebalenceTree(T);
-17     rebalenceTree(F);
-18 }        
-19 aux = y
-20 y = y.direita
-21 free aux
-22 rebalenceTree(T);
-23 rebalenceTree(F);
-````
+RBTransplant(T,u,v)
+1 if u.p == T.nil
+2   T.raiz = v
+3 else if u == u.p.esquerda
+4    u.p.esquerda = v
+5 else u.p.direita = v
+6 v.p = u.p
+```
+<i>Explicação:</i> Essa sub-função faz com que seja substituido uma subárvore como um filho de seu pai por uma outra subárvore e quando é feita essa substituição, a subárvore enraizada no nó _u_ pela subárvore enraizado no nó _v_,  o pai do nó _u_ tornase o pai do nó _v_, e o pai de _u_ acaba ficando com _v_ como seu filho adequado. 
 
-* *T* e *F* representam uma estrutura de árvore e *x* um nó.
+```c
+remove_RBTree(T,z)
+1 y = z
+2 y.cor.original = y.cor
+3 if z.esquerda == T.nil
+4     x = z.direita
+5     RBTransplant(T,z,z.direita)
+6 else if z.direita == T.nil
+7     x = z.esquerda
+8     RBTransplant(T,z,z.esquerda)
+9 else y = Tree-Minimum(z.direita)
+10     y.cor.original = y.cor
+11     x = y.direita
+12     if y.p == z
+13         x.p = y
+14     else RBTransplant(T,y,y.direita)
+15         y.direita = z.direita
+16         y.direita.p = y
+17     RBTransplant(T,z,y)
+18     y.esquerda = z.esquerda
+19     y.esquerda.p = y
+20     y.cor = z.cor
+21 if y.cor.original == PRETO
+22     RBDeleteFixUp(T,x)
+```
 
-<p align="center">
-<img src="imgs/removeAVL.png" width="550px"/>
-</p>
-<p align="center">
-<i>Figura 10: Exemplo de uma remoção balanceada na Árvore AVL.</i>
-</p>
+* *T* representa uma estrutura de árvore e *u*, *v* e *z* um nó.
 
-__*<u>Testes utilizando Árvore AVL</u>*__
+Após ser feita a remoção do nó *z*, *remove_RBTree()* chama um procedimento auxiliar _RBDeleteFixUp()_, que muda as cores e executa rotações para restaurar as propriedades da árvore RedBlack, sendo necessário observar em uma remoção os seguintes casos para que se mantenha em conformidade com suas propriedades:
 
-Após ser feita a implementação de todos os algoritmos básicos presentes em uma `Árvore AVL` foi possível realizar os testes propostos em  <a href="#apresentação">Apresentação</a> obtendo então os seguintes resultados informados na tabela a seguir:
+**Caso 1:** É feita a verificação se o pai do nó não é nulo, se for vai para o segundo caso
+
+**Caso 2:** Se o nó e seu pai forem pretos e seu irmão for vermelho, o pai deve ser pintado de vermelho e o irmão de preto e então se o nó for filho esquerdo, faz a rotação à esquerda de seu pai e vai pro próximo caso, se for filho direito, rotaciona o pai à direita e vai pro próximo caso
+
+**Caso 3:** Nesse caso, se o pai do nó, o irmão, o filho esquerdo e direito do irmão forem todos pretos, pinta o irmão de vermelho e volte para o primeiro caso com o pai do nó, se não forem vai pro próximo caso.
+
+**Caso 4:** Se o irmão e o filho esquerdo e direito do irmão forem pretos e o pai do nó for vermelho, deve pintar o irmão de vermelho e o pai do nó de preto, se não deve prosseguir para o próximo caso.
+
+**Caso 5:** Se o nó for filho esquerdo e o filho direito do irmão for preto deverá pintar o irmão de vermelho e o filho esquerdo do irmão de preto e aí sim rotacionar à direita o irmão, mas se o nó for filho direito deverá pintar o irmão de vermelho e o filho direito do irmão de preto e então rotacionar para esquerda o irmão, indo para o último caso
+
+**Caso 6:** Ao chegar nesse último caso deverá pintar o pai do nó de preto, caso o nó seja filho esquerdo, pinta o filho direito do irmão do nó de preto e rotaciona o pai do nó para a esquerda, se o nó for filho direito, pinta o filho esquerdo do irmão de preto e rotaciona o pai para direita.
+
+Ao sair do encadeamento de casos, poderá ser feita a remoção do nó naturalemnte
+
+__*<u>Testes utilizando Árvore RedBlack</u>*__
+
+Após ser feita a implementação de todos os algoritmos básicos presentes em uma `Árvore RedBlack` foi possível realizar os testes propostos em  <a href="#apresentação">Apresentação</a> obtendo então os seguintes resultados informados na tabela a seguir:
 
 <p align="left">
-<img src="imgs/tabelaAVL.png" width="1100" height="115"/>
+<img src="imgs/tabelaRB.png" width="1170" height="125"/>
 </p>
-<i>Tabela 4: Tempos médios de comparações para pesquisa, remoção e motagem da estrutura de Árvore AVL.</i>
+<i>Tabela 6: Tempos médios de comparações para pesquisa, remoção e motagem da estrutura de Árvore RedBlack.</i>
 <br><br>
 
 Onde os mesmos são fornecidos pelo programa desenvolvido da seguinte forma após a sua compilação:
 
 <p align="left">
-<img src="imgs/saidaAVL.png" width="300"/>
+<img src="imgs/saidaRB.png" width="300"/>
 </p>
-<i>Figura 11: Tempos encontrados após execução do programa como saída para diferentes processos implementados na Árvore AVL.</i>
+<i>Figura 13: Tempos encontrados após execução do programa como saída para diferentes processos implementados na Árvore RedBlack.</i>
 <br><br>
 
+---
+
+### • Pesquisa Binária
+
+__*<u>O que é uma Pesquisa Binária?</u>*__
+
+A **busca/pesquisa binária** é um algoritmo que implementa o paradigma _Divisão e Conquista_ para encontrar um elemento em um **vetor ordenado**. Uma analogia ao funcionamento desse algoritmo seria a busca de uma palavra em dicionário.
+
+**Divisão e Conquista:** Consiste em uma técnica de dividr um problema maior recursivamente em problemas menores até que o problema possa ser resolvido diretamente
+
+Ou seja, a **busca binária** funciona dividindo repetidamente pela metade a porção da lista que deve conter o item, até reduzir as localizações possíveis a apenas uma.
+
+<p align="center">
+<img src="imgs/binarysearch.png" width="600px"/>
+</p>
+<p align="center">
+<i>Figura 14: Exemplo de uma busca binária ao elemento 4 de um vetor ordenado.</i>
+</p>
+
+__*<u>Complexidade de uma Pesquisa Binária</u>*__
+
+Considerando um array com **N** elementos, o tempo de execução de uma `Pesquisa Binária` é:
+
+| Complexidade    |  Caso        | Situação                                    |         
+| ----------------| ------------ | ------------------------------------------- |
+|  $O(1)$         | Melhor caso  | O elemente procurado está no meio do array  |
+|  $O(log{n})$    | Pior caso    | O elemento não existe                       |
+|  $O(log{n})$    | Caso médio   | O elemento está em uma posição aleatoria           
+
+<i>Tabela 7: Complexidade de uma Pesquisa Binária em notação big O.</i>
+
+* Para se ter uma ideia da sua vantagem, em um array contendo N = 1000 elementos, no pior caso a <u>Busca Sequencial</u> irá executar **1000 comparações**, já a <u>Busca Binária</u> irá executar apenas **10 comparações**
+
+__*<u>Sua implementação no algoritmo</u>*__
+
+Primeiramente para a pesquisa binária ser funcional foi necessário realizar a ordenação dos 4 _**vectors**_ que continha os diferentes tamanhos de entradas, onde foi utilizado a função __sort()__ se tratando de uma função em STL (Standard Template Library) incluida na biblioteca `algorithm` presente na linguagem **C++** onde é necessário apenas passar o inicio (begin) e fim (end) da estrutura que é requerida a ordenação, sendo possível ver a sua implementação no código desenvolvido para os teste abaixo:
+
+Internamente essa função utiliza _IntroSort_, que é uma combinação de _QuickSort_, _HeapSort_ e _InsertionSort_.
+
+<p align="center">
+<img src="imgs/sort.png" width="400px"/>
+</p>
+<p align="center">
+<i>Figura 15: Exemplo de implementação da função sort() no algoritmo desenvolvido onde **vector_500entries** se trata de um vector com 500 números flutuantes.</i>
+</p>
+
+A utilização da `Pesquisa Binária` no algoritmo foi necessário após ser feita a proposta em <a href="#apresentação">Apresentação</a> onde foi necessário realizar comparações de tempo com as estruturas mencionadas anteriormente e vetores ordenados aplicados à  <a href="#•-pesquisa-binária">pesquisa binária</a>, analisando o tempo de ordenação dos respectivos vetores com entradas de 500, 5.000, 50.000 e 500.000 números flutuantes e o tempo gasto utilizando a `Pesquisa Binária` nesses vetores
+
+Sua implementação no algoritmo foi feita utilizando uma função presente dentro da biblioteca `bits/stdc++.h` que está presente no **C++** onde é chamada a função __binary_search(start_ptr, end_ptr, num)__ que retorna _true_ se o elemento estiver presente na estrutura pesquisada, senão retorna _false_. A variável *start_ptr* contpem o ponto inicial da busca binária e *end_ptr* mantém a posição final do espaço de busac binária e _num_ é o valor a ser encontrado, sendo possível de visualizar um exemplo gráfico abaixo da implementação da função no código que foi desenvolvido para testes:
+
+<p align="center">
+<img src="imgs/binarysearchimp.png" width="700px"/>
+</p>
+<p align="center">
+<i>Figura 16: Exemplo de implementação da pesquisa binária no algoritmo desenvolvido onde **vector_500entries** se trata de um vector com 500 números flutuantes e **query_numbers** um vector contendo 10.000 números flutuantes para a pesquisa.</i>
+</p>
 
 
+__*<u>Testes utilizando Pesquisa Binária com vetores ordenados</u>*__
 
+Após ser feita a implementação de todos os algoritmos básicos presentes em uma `Árvore RedBlack` foi possível realizar os testes propostos em  <a href="#apresentação">Apresentação</a> obtendo então os seguintes resultados informados na tabela a seguir:
 
- 
-### • Contabilização da recorrência de cada palavra presente no arquivo
- 
-Primeiramente foi necessário ser feita a leitura de um arquivo do tipo _.txt_ contendo um texto sendo esse o alvo da compactação, onde no programa a função __ReadDocument()__ realiza esse trabalho recebendo como parâmetro uma `Lista Dinâmica` e uma estrutura de `Huffman` fazendo a leitura do arquivo _document.txt_ linha por linha, onde a cada linha lida é feita a tokenização de cada palavra e é feito o armazenamento dessas palavras em _vector tokens_ e com isso foi feita a remoção das vogais solitárias para que não houvesse interferência na normalização e codificação das palavras.
-A recorrência foi feita checando as palavras de uma a uma, utilizando três estruturas de repetição do tipo `FOR` onde a primeira vai segurar uma palavra presente no _vector tokens_ , a segunda vai sempre começar a percorrer uma a frente para que não seja feita a verificação de duas mesmas palavras e a última estrutura vai percorrer o *vector verified_words*, um vector de strings onde a cada verificação das palavras é incrementada a palavra nesse vector,sendo feita a verificação de cada palavra do _vector tokens_ para que seja verificado se não vai haver uma segunda contabilização de determinada palavra, caso seja verificado que não foi realizado a verificação de cada palavra e que foi encontrado uma igual, será incrementado mais um na variável *repetition_count* para que no fim do segundo `FOR` seja feita a inserção da palavra e a sua quantidade de repetições na lista passada como parâmetro, fazendo no final a limpeza da variável *repetition_count* para que haja uma nova contabilização de uma outra palavra.
- 
-### • Normalização da contabilização
- 
-Para ser feita a normalização da contabilização primeiramente foi necessário encontrar o número máximo e o número mínimo de repetições para que fosse possível normalizar a contabilização entre 0 e 1 utilizando a fórmula $\frac{RP}{maxRP - minRP}$ , portanto foi encontrado o maior e o menor número de repetição percorrendo a lista e então armazenando-os nas variáveis *max_repetition* e *min_repetition* respectivamentes aplicando então a fórmula da normalização colocando o resultado na variável *normalization* como abaixo:
- 
+<p align="center">
+<img src="imgs/tempos_pesquisabinaria.png" width="800"/>
+</p>
+<i>Tabela 8: Tempos médios de comparações para ordenação de vetores com diferentes entradas e a pesquisa binária aplicada à eles.</i>
+<br><br>
+
+Onde os mesmos são fornecidos pelo programa desenvolvido da seguinte forma após a sua compilação:
+
+<p align="left">
+<img src="imgs/saidavectors.png" width="300"/>
+</p>
+<i>Figura 17: Tempos encontrados após execução do programa como saída para diferentes processos implementados na Árvore RedBlack.</i>
+<br><br>
+
+--- 
+
+### • Estruturas MAPs
+
+__*<u>Função std::map</u>*__
+
+Inicialmente `map` é um contêiner que armazena elementos em pares chave-valor. Os valores de chave geralmente são usados para classificar e identificar exclusivamente os elementos, enquanto os valores mapeados armazenam o contéudo associado a essa chave, podendo diferir os tipos de chave e valor mapeados, sendo necessário incluir a biblioteca _map_ para a sua utilização.
+
+Os tipos de chave e valores usados para a implementação da função __map()__ no algoritmo de testes foram do tipo _int_ e _float_ respectivamentes como é possível visualizar um exemplo de sua implementação abaixo:
+
 ```c++
-   normalization = (aux2->data.repetition_number / (max_repetition - min_repetition));
+map<int, float> map500entries;
 ```
-Feito isso, vai ser armazenado o valor encontrado adicionando-o no Item da lista *repetition_number* de cada palavra em que foi feita a normalização
- 
-### • Montagem da árvore de Huffman
- 
-Já possuindo um lista de palavras com suas determinadas repetições normalizadas de maneira ordenada, foi possibilitada a criação da `Árvore de Huffman` que inicialmente é composta em seu nó por uma variável do tipo _Item_ que vai ser as variáveis presentes no _Item_ da Lista Dinâmica e _ponteiros_ que apontam para os seguintes posições  left(esquerda), right(direita), _prox_(proximo) como possível a ver na representação abaixo:
- 
+
+Foi necessária a sua utilização para ser obtido resultados de seu tempo de execução para ser feita a pesquisa utilizando os métodos internos da função, verificando se há ganho maiores no processo comparado à pesquisa binária.
+
+__*Complexidade*__
+
+Sua complexidade para pesquisa utilizando sua função inclusa __find()__ (como feito no algoritmo) é $O(log{n})$ mesmo no pior caso, pois os elementos são armazenados internamente como uma `Árvore Binária de Pesquisa` balanceada, sendo _n_ o número de elementos dentro da __map()__.
+
+__*<u>Função std::unordered_map</u>*__
+
+Inicialmente `map` é um contêiner associativo que contém pares de valores-chave com chaves exclusivas, havendo similiaridade com a estrutura de dados `Tabela Hash`.
+Internamente, os elementos não são classificados em nenhuma ordem específica, mas organizados em buckets. Em qual bucket um elemento é colocado depende inteiramente do hash de sua chave, permitindo o acesso rápido a elementos individuais, uma vez que o hash é calculado, se referindo ao bucket exato em que o elemento está localizado.
+Os tipos de chave e valores usados para a implementação da função __unordered_map()__ no algoritmo de testes foram do tipo _int_ e _float_ respectivamentes como é possível visualizar um exemplo de sua implementação abaixo:
+
+```c++
+unordered_map<int, float> unordered_map500entries;
+```
+
+Foi necessária a sua utilização para ser obtido resultados de seu tempo de execução para ser feita a pesquisa utilizando os métodos internos da função, verificando se há ganho maiores no processo comparado à pesquisa binária.
+
+__*Complexidade*__
+
+Sua complexidade para pesquisa utilizando sua função inclusa __find()__ (como feito no algoritmo) é $O(1)$ mesmo no pior caso, pois os elementos são armazenados em uma `Tabela Hash` e, portanto, a chave atua como um índice durante a pesquisa em mapas não ordenados. Considerando _n_ o número de elementos dentro da __unordered_map()__
+
+__*<u>Testes utilizando as estruturas MAPs</u>*__
+
+Após ser feita a implementação da função __std::map__ e __std::unordered_map__ e sua respectivas funções de pesquisa, foi possível realizar os testes propostos em  <a href="#apresentação">Apresentação</a> obtendo então os seguintes resultados informados nas tabelas a seguir:
+
 <p align="center">
-<img src="imgs/insertionTreeABP.png" width="170px"/>
-<i>Imagem 1: Saída do programa onde é imprenso o ranking de relevância dos documentos</i>
+<img src="imgs/tabelamap.png" width="500"/>
 </p>
- 
-Ou seja, a `Árvore de Huffman` se tratará de uma lista encadeada ordenada e será preenchida através da função __FillHuffman()__ que vai receber como parametro a lista de palavras com suas repetições e a estrutura de _Huffman_, onde vai preencher a estrutura de _Huffman_ com elementos presentes na lista de maneira ordenada definindo seus nós como **NULL**, a partir disso vai ser criada a `Árvore de Huffman` sendo feita pela função __HuffmanTree()__ que constitui de um nó e recebe como parâmetro a estrutura _Huffman_ preenchida, fazendo então de dois novos nó, sendo eles _**first**_ e _**second**_ que através de uma estrutura de repetição `WHILE`, que repete enquanto o tamanho da estrutura é maior que 1, vai retirando os dois primeiros elementos da estrutura (os dois menores elementos) colocando-os respectivamente nos nós criados e assim então criando um terceiro novo nó chamado **new_no** que vai receber como parte do seu _Item word_ um caracter qualquer e do seu *Item repetition_number* a soma da normalização dos dois nós removidos, inserindo os dois nós removidos como filho direito e esquerdo deste novo nó e após isso insere novamente na lista, como possível visualizar na representação abaixo:
- 
+<i>Tabela 9: Tempos médios de comparações para pesquisa utilizando a função map() com diferentes tamanhos de entrada.</i>
+<br><br>
+
 <p align="center">
-<img src="imgs/code4.png" width="550px"/>
+<img src="imgs/tabelaunorderedmap.png" width="500"/>
 </p>
- 
-(_OBS: A representação acima é referente a algumas palavras presentes no texto que está no arquivo *'documents.txt'* e também de possível visualização em <a href="#resultados">resultados</a>._)
- 
-Ao final desta função vai ser retornada o início da estrutura de _Huffman_ ou apenas um nó caso a estrutura possua um número ímpar de elementos.<br>
- 
-### • Codificação binária das palavras
- 
-Até o momento irá existir um nó chamado *tree* presente no algoritmo em que vai possuir toda a `Árvore de Huffman` e relacionada ao exemplo anterior vai estar como na representação a seguir:
- 
-<p align="center">
-<img src="imgs/code5.png" width="550px"/>
+<i>Tabela 10: Tempos médios de comparações para pesquisa utilizando a função map() com diferentes tamanhos de entrada.</i>
+<br><br>
+
+Onde os mesmos são fornecidos pelo programa desenvolvido da seguinte forma após a sua compilação:
+
+<p align="left">
+<img src="imgs/saidamaps.png" width="400"/>
 </p>
- 
-(_OBS: A representação acima é referente a algumas palavras presentes no texto que está no arquivo *'documents.txt'* e também de possível visualização em <a href="#resultados">resultados</a>._)
- 
- 
-A resolução para a codificação binária das palavras é encontrada na função __GenerateSequence()__ onde recebe como parâmetro toda a `Árvore de Huffman` construída na função anterior como parâmetro, uma nova `Lista Dinâmica` criada para armazenar as sequências booleanas com suas respectivas palavras e uma _string_ chamada *way*, se tratando de uma função recursiva, já vai ser introduzida com uma estrutura de decisão `IF` onde verifica se chegou em uma folha, ou seja, os filhos esquerdos e direitos daquele nó são **NULL** e caso se tratar de uma folha vai ser passada a palavra e a sequência booleana em forma de _string_ que foi obtida durante toda a recursão da função para a `Lista Dinâmica`, caso contrário, significa ainda que possui filhos então é feita duas cópias do caminho gerado até ali, uma cópia continuará para a esquerda e a outra para a direita. Na cópia da esquerda vai ser concatenado um 0 na variável *left_way* e na cópia da direita vai ser concatenada um 1 na variável *right_way* e por fim vai ser feita duas chamadas recursivas da função __GenerateSequence()__, uma para a esquerda com a *left_way* e outra para a direita com o *right_way* passados como parâmetros
- 
-### • Escrita da codificação binária em um arquivo binário
- 
-A última etapa do código consiste em pegar toda a codificação feita na etapa anterior e escrever essa codificação em formato _booleano_ correspondentes às palavras que são encontradas no arquivo de texto inicial, para a solução desse propósito foi criado a função __WriteBinaryFile()__ que recebe como parâmetro uma lista que contém as palavras com suas respectivas sequências booleanas e o _vector tokens_ criado no início do programa eu contém a tokenização do arquivo de texto a ser codificado. Diante disso, a função inicia com duas estruturas de repetição, sendo um `FOR` e um `WHILE` onde primeiramente o `FOR` irá percorrer o _vector tokens_ e o `WHILE` vai ser necessário para percorrer a lista que a cada posição percorrida vai ser feita a verificação utilizando a estrutura de decisão `IF` , verificando se cada posição do _vecotr tokens_ corresponde a posição da lista e caso seja correspondente vai ser introduzido um novo `FOR` para converter a sequência que está na lista em tipo _string_ para tipo _bool_ através de um _vector bool_ que vai armazenando a sequência em formato booleano para no fim escrever posição por posição do _vector bool_ no novo arquivo do tipo _.bin_, que ao fim vai ser feita a limpeza desse vector para que possa ser utilizado novamente em uma nova palavra encontrada na verificação de igualdade do texto.
+<i>Figura 18: Tempos encontrados após execução do programa como saída para diferentes processos implementados na Árvore RedBlack.</i>
+<br><br>
  
 ---
  
-## Resultados
+## Resultados e Análises
  
-• Após toda a lógica acima ter sido implementada no algoritmo foi possível a obtenção da compactação do arquivo *'document.txt'* como forma de teste onde o mesmo continha o seguinte texto:
+• Após todo o código ser implementado com suas respectivas estruturas funcionando, foi possível realizar testes para obtenção do resultados de tempo de cada tipo de estrutura mencionado na proposta, onde foi possível obter os valores que estão presentes na **tabela 2**, **tabela 4**, **tabela 6**, **tabela 8**, **tabela 9** e **tabela 10**, mostrando seus tempos médios para os diferentes tamanhos de entradas e processos, possibilitando a criação dos seguintes gráficos a seguir:
+
+
  
 _Caros amigos, a infinita diversidade da realidade única nos obriga à análise do demônio de Laplace. Por outro lado, a complexidade dos estudos efetuados cumpre um papel essencial na formulação da fundamentação metafísica das representações. Assim mesmo, a forma geral da proposição significativa deverá confirmar as consequências decorrentes do sistema de conhecimento geral._
  

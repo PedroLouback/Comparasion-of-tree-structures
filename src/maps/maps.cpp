@@ -121,7 +121,7 @@ void InsertAndSearch500EntriesinUnorderedMap(vector<float> query_numbers)
     float number;
     unordered_map<int, float> unordered_map500entries;
     size_t time;
-
+    
     entries_file.open("src/files/500entries.txt");
     for (int i = 0; i < 500; i++)
     {
