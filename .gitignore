@@ -8,3 +8,8 @@ build/objects/src/files/files.o
 build/objects/src/redblack_tree/rb.o
 build/objects/src/tests.o
 build/objects/src/maps/maps.o
+imgs/remove3.jpg:Zone.Identifier
+imgs/remove2.jpg:Zone.Identifier
+imgs/remove1.jpg:Zone.Identifier
+imgs/AVLtreef.svg.png:Zone.Identifier
+imgs/AVLtree.JPG:Zone.Identifier

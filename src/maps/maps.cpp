@@ -6,18 +6,16 @@ void InsertAndSearch500EntriesinMap(vector<float> query_numbers)
     ifstream entries_file;
     string number_in_string;
     float number;
-    int i = 0;
     map<int, float> map500entries;
     size_t time;
 
     entries_file.open("src/files/500entries.txt");
-    while (!entries_file.eof())
+    for (int i = 0; i < 500; i++)
     {
         getline(entries_file, number_in_string);
         istringstream in(number_in_string);
         in >> number;
-        map500entries.insert(make_pair(i, number));
-        i++;
+        map500entries.emplace(i, number);
     }
     entries_file.close();
     cout << "\n500 Entradas - map:";
@@ -36,18 +34,16 @@ void InsertAndSearch5000EntriesinMap(vector<float> query_numbers)
     ifstream entries_file;
     string number_in_string;
     float number;
-    int i = 0;
     map<int, float> map5000entries;
     size_t time;
 
     entries_file.open("src/files/5000entries.txt");
-    while (!entries_file.eof())
+    for (int i = 0; i < 5000; i++)
     {
         getline(entries_file, number_in_string);
         istringstream in(number_in_string);
         in >> number;
-        map5000entries.insert(make_pair(i, number));
-        i++;
+        map5000entries.emplace(i, number);
     }
     entries_file.close();
     cout << "\n5000 Entradas - map:";
@@ -66,18 +62,16 @@ void InsertAndSearch50000EntriesinMap(vector<float> query_numbers)
     ifstream entries_file;
     string number_in_string;
     float number;
-    int i = 0;
     map<int, float> map50000entries;
     size_t time;
 
     entries_file.open("src/files/50000entries.txt");
-    while (!entries_file.eof())
+    for (int i = 0; i < 50000; i++)
     {
         getline(entries_file, number_in_string);
         istringstream in(number_in_string);
         in >> number;
-        map50000entries.insert(make_pair(i, number));
-        i++;
+        map50000entries.emplace(i, number);
     }
     entries_file.close();
     cout << "\n50000 Entradas - map:";
@@ -96,19 +90,18 @@ void InsertAndSearch500000EntriesinMap(vector<float> query_numbers)
     ifstream entries_file;
     string number_in_string;
     float number;
-    int i = 0;
     map<int, float> map500000entries;
     size_t time;
 
     entries_file.open("src/files/500000entries.txt");
-    while (!entries_file.eof())
+    for (int i = 0; i < 500000; i++)
     {
         getline(entries_file, number_in_string);
         istringstream in(number_in_string);
         in >> number;
-        map500000entries.insert(make_pair(i, number));
-        i++;
+        map500000entries.emplace(i, number);
     }
+
     entries_file.close();
     cout << "\n500000 Entradas - map:";
     time = clock();
@@ -126,18 +119,16 @@ void InsertAndSearch500EntriesinUnorderedMap(vector<float> query_numbers)
     ifstream entries_file;
     string number_in_string;
     float number;
-    int i = 0;
     unordered_map<int, float> unordered_map500entries;
     size_t time;
 
     entries_file.open("src/files/500entries.txt");
-    while (!entries_file.eof())
+    for (int i = 0; i < 500; i++)
     {
         getline(entries_file, number_in_string);
         istringstream in(number_in_string);
         in >> number;
-        unordered_map500entries.insert(make_pair(i, number));
-        i++;
+        unordered_map500entries.emplace(i, number);
     }
     entries_file.close();
     cout << "\n500 Entradas - unordered map:";
@@ -156,18 +147,16 @@ void InsertAndSearch5000EntriesinUnorderedMap(vector<float> query_numbers)
     ifstream entries_file;
     string number_in_string;
     float number;
-    int i = 0;
     unordered_map<int, float> unordered_map5000entries;
     size_t time;
 
     entries_file.open("src/files/5000entries.txt");
-    while (!entries_file.eof())
+    for (int i = 0; i < 5000; i++)
     {
         getline(entries_file, number_in_string);
         istringstream in(number_in_string);
         in >> number;
-        unordered_map5000entries.insert(make_pair(i, number));
-        i++;
+        unordered_map5000entries.emplace(i, number);
     }
     entries_file.close();
     cout << "\n5000 Entradas - unordered map:";
@@ -186,18 +175,16 @@ void InsertAndSearch50000EntriesinUnorderedMap(vector<float> query_numbers)
     ifstream entries_file;
     string number_in_string;
     float number;
-    int i = 0;
     unordered_map<int, float> unordered_map50000entries;
     size_t time;
 
     entries_file.open("src/files/50000entries.txt");
-    while (!entries_file.eof())
+    for (int i = 0; i < 50000; i++)
     {
         getline(entries_file, number_in_string);
         istringstream in(number_in_string);
         in >> number;
-        unordered_map50000entries.insert(make_pair(i, number));
-        i++;
+        unordered_map50000entries.emplace(i, number);
     }
     entries_file.close();
     cout << "\n50000 Entradas - unordered map:";
@@ -216,20 +203,18 @@ void InsertAndSearch500000EntriesinUnorderedMap(vector<float> query_numbers)
     ifstream entries_file;
     string number_in_string;
     float number;
-    int i = 0;
     unordered_map<int, float> unordered_map500000entries;
-    size_t time;
+    size_t time = 0;
 
     entries_file.open("src/files/500000entries.txt");
-    while (!entries_file.eof())
-    {
+    for (int i = 0; i < 500000; i++){
         getline(entries_file, number_in_string);
         istringstream in(number_in_string);
         in >> number;
-        unordered_map500000entries.insert(make_pair(i, number));
-        i++;
+        unordered_map500000entries.emplace(i, number);
     }
     entries_file.close();
+
     cout << "\n500000 Entradas - unordered map:";
     time = clock();
     for (size_t i = 0; i < query_numbers.size(); i++)

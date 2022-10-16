@@ -5,8 +5,6 @@
 
 using namespace std;
 
-void CreateEntriesFile();
-void CreateQueryFile();
 vector<float> ReadQueryNumbers();
 
 #endif
