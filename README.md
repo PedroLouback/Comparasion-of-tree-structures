@@ -11,6 +11,7 @@
     <a href="#introdução">Introdução</a> • 
     <a href="#estruturas-e-suas-implementações">Estruturas e suas implementações</a> •
     <a href="#resultados-e-análises">Resultados e Análises</a> •
+    <a href="#conclusão">Conclusão</a> •
     <a href="#bibliotecas">Bibliotecas</a> •
     <a href="#compilação-e-execução">Compilação e Execução</a> •
     <a href="#referências">Referências</a> •
@@ -751,21 +752,72 @@ Onde os mesmos são fornecidos pelo programa desenvolvido da seguinte forma apó
  
 • Após todo o código ser implementado com suas respectivas estruturas funcionando, foi possível realizar testes para obtenção do resultados de tempo de cada tipo de estrutura mencionado na proposta, onde foi possível obter os valores que estão presentes na **tabela 2**, **tabela 4**, **tabela 6**, **tabela 8**, **tabela 9** e **tabela 10**, mostrando seus tempos médios para os diferentes tamanhos de entradas e processos, possibilitando a criação dos seguintes gráficos a seguir:
 
-
- 
-_Caros amigos, a infinita diversidade da realidade única nos obriga à análise do demônio de Laplace. Por outro lado, a complexidade dos estudos efetuados cumpre um papel essencial na formulação da fundamentação metafísica das representações. Assim mesmo, a forma geral da proposição significativa deverá confirmar as consequências decorrentes do sistema de conhecimento geral._
- 
-_Neste sentido, o novo modelo estruturalista aqui preconizado auxilia a preparação e a composição das posturas dos filósofos divergentes com relação às atribuições conceituais. Baseando-se nos ensinamentos de Dewey, a canalização do Ser do Ente garante a contribuição de um grupo importante na determinação das novas teorias propostas. A prática cotidiana prova que a consolidação das estruturas psico-lógicas não sistematiza essa relação, de tal modo que a pulsão funciona funciona como significado da determinação do Ser enquanto Ser._
- 
-Onde a partir desse texto foi visualizado que o arquivo _'.txt'_ do mesmo continha um total de **_953 bytes_** e após a compactação realizada pelo algoritmo foi criado um novo arquivo _'.bin'_ chamado *'compact_text.bin'* encontrando um tamanho de **_761 bytes_** do mesmo, concluindo que a compactação foi feita com sucesso, tendo um total de **_191 bytes_** compactados.
- 
-• Ao ser compilado e executado o programa irá gerar a seguinte mensagem:
- 
 <p align="center">
-<img src="imgs/code6.png" width="600px"/>
+<img src="imgs/Graph500entries.png" width="400"/>
+<img src="imgs/Graph5000entries.png" width="405"/>
 </p>
+<i>Figura 19: Gráficos de tempo (s) em relação aos tipos diferentes de árvores ao serem utilizadas nos processos de pesquisa e remoção com 500 e 5.000 entradas.</i>
+<br><br>
+
+<p align="center">
+<img src="imgs/Graph50000entries.png" width="400"/>
+<img src="imgs/Graph500000entries.png" width="400"/>
+</p>
+<i>Figura 20: Gráficos de tempo (s) em relação aos tipos diferentes de árvores ao serem utilizadas nos processos de pesquisa e remoção com 50.000 e 500.000 entradas.</i>
+
+<p align="center">
+<img src="imgs/GraphMontagemEstrutura.png" width="400"/>
+</p>
+<i>Figura 21: Gráfico contendo a média de tempo (eixo y) dos diferentes tamanhos de entrada utilizado para a montagem da estrutura de cada árvore (eixo x) </i>
+<br><br>
+
+<p align="center">
+<img src="imgs/GraphEstruturas.png" width="400"/>
+</p>
+<i>Figura 22: Gráfico contendo a média de tempo (eixo y) dos diferentes tamanhos de entrada utilizado para a pesquisa de cada estruturas citada (eixo x) </i>
+<br><br>
  
-Diante disso um arquivo de texto chamado _'sequence.txt'_ irá ser criado no qual vai informar ao usuário todas as palavras presentes no texto com suas respectivas codificações booleanas, esse arquivo abre a possibilidade do usuário de consultar as codificações encontradas no arquivo binário.
+Observando que foi utilizado um total de 10.000 números do tipo flutuante para realizar as pesquisas nas respectivas estruturas, considerando que:
+
+* Há um total de **3** números iguais no conjunto de 10.000 números em relação a entrada de 500 números, sendo **_0.6%_** do total de entradas mencionada;
+* Há um total de **10** números iguais no conjunto de 10.000 números em relação a entrada de 5.000 números, sendo **_0.2%_** do total de entradas mencionada;
+* Há um total de **66** números iguais no conjunto de 10.000 números em relação a entrada de 50.000 números, sendo **_1.32%%_** do total de entradas mencionada;
+* Há um total de **601** números iguais no conjunto de 10.000 números em relação a entrada de 500.000 números, sendo **_12.02%%_** do total de entradas mencionada.
+ 
+---
+
+## Conclusão
+
+__*<u>Montagem em estrutura</u>*__
+- Levando em consideração esses valores apresentados em relação aos resultados obtidos de tempo foi possível analisar através de comparações que para *montagem em estrutura* a <a href="#•-árvore-binária-de-pesquisa">Árvore Binária de Pesquisa</a> se destaca por não possuir nenhuma limitação em sua inserção como as outras árvores possuem para garantir o balanceamento, ou seja, pela `Árvore Binária de Pesquisa` não ser uma estrutura balanceada sem condições de construção, se torna uma estrutura mais eficiente na montagem. Ao contrário disso, foi possível visualizar que a <a href="#•-árvore-redblack">Árvore RedBlack</a> obteve uma  menor eficiência em sua *montagem em estrutura* por se tratar de uma árvore que, entre as árvores balanceadas envolvidas nos testes, possui um maior número de casos para serem tratadas na inserção em mémoria, tornando o processo de montagem um pouco mais lento, havendo uma diferença de **<u>0,060821334 segundos</u>** na *montagem em estrutura* entre a `Árvore Binária de Pesquisa` e `Árvore RedBlack`.
+
+__*<u>Pesquisa</u>*__
+- Utilizando de base os resultados obtidos e estruturados, foi possível notar pela comparação das médias uma diferença positiva para a <a href="#•-árvore-redblack">Árvore RedBlack</a>, sendo seguida da <a href="#•-árvore-avl">Árvore AVL</a> e por último a <a href="#•-árvore-binária-de-pesquisa">Árvore Binária de Pesquisa</a> em ranking de velocidade de execução durante as pesquisas para até 50.000 entradas, sendo explicado pela falta de balanceamento da `Árvore Binária de Pesquisa`, tornando-a mais lenta.
+ Após ser realizado o último testes com um total de 500.000 entradas foi possível observar que obteve uma diferença em relação ao ranking de tempos onde a `Árvore Binária de Pesquisa` tomou a liderança de mais rápida, seguinda pela `Árvore AVL` ficando em ultimo lugar a `Árvore RedBlack` sendo a estrutura que demorou mais tempo para realizar pesquisas, podendo ocasionar essa diferença na maior quantidade de entradas por possuir cerca de **12%** de seus elementos presentes nos 10.000 números utilizados para consulta e por ser uma árvore um pouco menos estritamente equilibrida que a `Árvore AVL` como mencionado nas explicações das estruturas acima. Apesar da estrutura `Árvore AVL` apresentar resultado mediano em todos os teste é levado em consideração a massa de dados iguais contidas na árvore em relação as 10.000 entradas de consulta pois é vísivel em literatura [1] que a `Árvore AVL` se destaca na eficiência de pesquisa em relação a `Árvore RedBlack`.
+
+__*<u>Remoção</u>*__
+- Com esses mesmos dados foi concluido que no processo de remoção de elementos das estruturas estudadas, entre elas se destacou novamente a `Árvore RedBlack`, agora em sincronia com conteúdos encontrados na literatura [1] é possível concordar com os resultados forncedios pelo teste, em sequência no ranking está situado a `Árvore AVL` e por fim a `Árvore Binária de Pesquisa`. A `Árvore RedBlack` se destaca nesse processo em relação a outros tipos de árvores mencionados pois menos rotações são realizadas devido ao balancemaneto relativamente relaxado.
+
+__*<u>Comparações com vetores</u>*__
+- Utilizando os testes citados anteriormente em comparação com teste realizados é possível visualizar utilizando como referência o gráfico apresentado na **Figura 22** que estruturas do tipo *Árvore* apresentam maior eficiência em pesquisa de elementos quando comparadas com utilização da `Busca Binária` em vetores ordenados, havendo um diferença de tempo de **<u>0,00040225 segundos</u>** entre a `Árvore Binária de Pesquisa` (estrutura menos eficiente para pesquisa) e a pesquisa em vetores ordenados, onde para a implementação da `Pesquisa Binária` foi necessária a utilização da função sort() como mencionada anteriormente na explicação das estruturas, podendo visualizar os tempos de ordenação para os diferentes tamanhos de entradas no gráfico abaixo:
+
+<p align="center">
+<img src="imgs/GraphVector.png" width="400"/>
+</p>
+<i>Figura 23: Gráfico contendo a média de tempo (eixo y) dos diferentes tamanhos de entrada utilizado para a ordenação de vetores (eixo x) </i>
+<br><br>
+
+__*<u>Utilização de estruturas MAPs</u>*__
+- Ao adotar as estruturas MAPs mencionadas em <a href="#•-estruturas-maps">MAPs</a> foi realizado testes, possibilitando as seguintes conclusões.<br><br>
+ _Para a utilização da função std::map()_ em comparação com as demais estruturas analisadas com testes de pesquisa foi possível observar que obteve um eficiência maior tendo uma diferença **<u>0,000828749 segundos</u>** entre a `Árvore RedBlack` (segunda estrutura mais eficiente para pesquisa) e a utilização da estrutura **map()** para pesquisa, essa eficiência deve se a sua maneira de armazenar elementos internamente como `Árvore Binária de Pesquisa` balanceada, tendo uma complexidade $O(log{n})$ mesmo no pior caso. É possível observar esse ganho de eficiência em comparação com as outras estruturas no gráfico plotado abaixo:
+
+<p align="center">
+<img src="imgs/Graphmap.png" width="400"/>
+</p>
+<i>Figura 24: Gráfico contendo a média de tempo (eixo y) dos diferentes tamanhos de entrada utilizado para a ordenação de diferentes estruturas (eixo x) </i>
+<br><br>
+
+ *Para a utilização da função std::unordered_map()* foi feita também testes de pesquisas, possibilitando a sua comparação com os testes de pesquisas feitos com as estruturas presentes no código 
 
 ---
 
@@ -797,6 +849,8 @@ Diante disso um arquivo de texto chamado _'sequence.txt'_ irá ser criado no qua
 [1] CORMEM, Thomas H. et al. __Algoritmos__: Teoria e Prática. 3. ed. Cambridge, Massachussetts: MIT Press, [2009]. 1292 p. ISBN 9780262033848.
 
 [2] THAPLIYAL, Rohit. __Map vs unordered_map in C++__. [S. l.]: GeeksforGeeks, 7 jul. 2022. Disponível em: https://www.geeksforgeeks.org/map-vs-unordered_map-c/. Acesso em: 15 out. 2022.
+
+[3]STROUSTRUP, B. Cplusplus. Disponível em: <https://cplusplus.com>. Acesso em: 17 out. 2022.
 
 ---
 
