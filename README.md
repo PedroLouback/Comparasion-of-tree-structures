@@ -786,8 +786,8 @@ Observando que foi utilizado um total de 10.000 números do tipo flutuante para 
  
 •Todos os teste foram realizados em uma máquina com as seguintes especificações, sendo elementos ocasionais de incertezas nas medições de tempo:
 
-**Processador:** AMD Ryzen 5 1600;
-**Mémoria :** 16 GB - 1600 Mhz;
+**Processador:** AMD Ryzen 5 1600;<br><br>
+**Mémoria :** 16 GB - 1600 Mhz;<br><br>
 **Sistema Operacional:** Linux - Ubuntu 20.04 LTS
 
 ---
