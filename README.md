@@ -784,6 +784,12 @@ Observando que foi utilizado um total de 10.000 números do tipo flutuante para 
 * Há um total de **66** números iguais no conjunto de 10.000 números em relação a entrada de 50.000 números, sendo **_1.32%%_** do total de entradas mencionada;
 * Há um total de **601** números iguais no conjunto de 10.000 números em relação a entrada de 500.000 números, sendo **_12.02%%_** do total de entradas mencionada.
  
+•Todos os teste foram realizados em uma máquina com as seguintes especificações, sendo elementos ocasionais de incertezas nas medições de tempo:
+
+**Processador:** AMD Ryzen 5 1600;
+**Mémoria :** 16 GB - 1600 Mhz;
+**Sistema Operacional:** Linux - Ubuntu 20.04 LTS
+
 ---
 
 ## Conclusão
@@ -802,22 +808,28 @@ __*<u>Comparações com vetores</u>*__
 - Utilizando os testes citados anteriormente em comparação com teste realizados é possível visualizar utilizando como referência o gráfico apresentado na **Figura 22** que estruturas do tipo *Árvore* apresentam maior eficiência em pesquisa de elementos quando comparadas com utilização da `Busca Binária` em vetores ordenados, havendo um diferença de tempo de **<u>0,00040225 segundos</u>** entre a `Árvore Binária de Pesquisa` (estrutura menos eficiente para pesquisa) e a pesquisa em vetores ordenados, onde para a implementação da `Pesquisa Binária` foi necessária a utilização da função sort() como mencionada anteriormente na explicação das estruturas, podendo visualizar os tempos de ordenação para os diferentes tamanhos de entradas no gráfico abaixo:
 
 <p align="center">
-<img src="imgs/GraphVector.png" width="400"/>
+<img src="imgs/GraphVector.png" width="450"/>
 </p>
 <i>Figura 23: Gráfico contendo a média de tempo (eixo y) dos diferentes tamanhos de entrada utilizado para a ordenação de vetores (eixo x) </i>
 <br><br>
 
 __*<u>Utilização de estruturas MAPs</u>*__
 - Ao adotar as estruturas MAPs mencionadas em <a href="#•-estruturas-maps">MAPs</a> foi realizado testes, possibilitando as seguintes conclusões.<br><br>
- _Para a utilização da função std::map()_ em comparação com as demais estruturas analisadas com testes de pesquisa foi possível observar que obteve um eficiência maior tendo uma diferença **<u>0,000828749 segundos</u>** entre a `Árvore RedBlack` (segunda estrutura mais eficiente para pesquisa) e a utilização da estrutura **map()** para pesquisa, essa eficiência deve se a sua maneira de armazenar elementos internamente como `Árvore Binária de Pesquisa` balanceada, tendo uma complexidade $O(log{n})$ mesmo no pior caso. É possível observar esse ganho de eficiência em comparação com as outras estruturas no gráfico plotado abaixo:
+ **Para a utilização da função std::map()** em comparação com as demais estruturas analisadas com testes de pesquisa foi possível observar que obteve um eficiência maior tendo uma diferença **<u>0,000828749 segundos</u>** entre a `Árvore RedBlack` (segunda estrutura mais eficiente para pesquisa) e a utilização da estrutura **map()** para pesquisa, essa eficiência deve se a sua maneira de armazenar elementos internamente como `Árvore Binária de Pesquisa` balanceada, tendo uma complexidade $O(log{n})$ mesmo no pior caso. É possível observar esse ganho de eficiência em comparação com as outras estruturas no gráfico plotado abaixo:
 
 <p align="center">
-<img src="imgs/Graphmap.png" width="400"/>
+<img src="imgs/Graphmap.png" width="450"/>
 </p>
 <i>Figura 24: Gráfico contendo a média de tempo (eixo y) dos diferentes tamanhos de entrada utilizado para a ordenação de diferentes estruturas (eixo x) </i>
 <br><br>
 
- *Para a utilização da função std::unordered_map()* foi feita também testes de pesquisas, possibilitando a sua comparação com os testes de pesquisas feitos com as estruturas presentes no código 
+ **Para a utilização da função std::unordered_map()** foi feita também testes de pesquisas, possibilitando a sua comparação com os testes de pesquisas feitos com as estruturas presentes no código, onde foi possível observar um ganho de eficiência ainda maior comparado com a ultima estrutura implementada *std::map* reduzindo o tempo de pesquisa em  **<u>0,002289 segundos</u>** (quase um terço do seu tempo) entre ela, possuindo uma diferença de  **<u>0,00311775 segundos</u>** da `Árvore RedBlack` (estrutura em árvore mais eficiente em pesquisa). Essa estrutura apresenta esse ganho de tempo no processo de pesquisa por armazenar elementos usando `Tabela Hash`, buscando uma chave específica torna sua complexidade para a operação de $O(1)$. É possível observar esse ganho de eficiência em relação as outras estruturas no gráfico plotado abaixo:
+
+<p align="center">
+<img src="imgs/Graphunordered_map.png" width="450"/>
+</p>
+<i>Figura 25: Gráfico contendo a média de tempo (eixo y) dos diferentes tamanhos de entrada utilizado para a ordenação de diferentes estruturas (eixo x) </i>
+<br><br>
 
 ---
 
